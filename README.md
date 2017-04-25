@@ -1,2 +1,2 @@
 # Cellular_Automaton
-Cellular Automaton for Basics of Programming Engeenering ( College subject )
+Cellular Automaton for Programming Methods and Languages ( College subject )
