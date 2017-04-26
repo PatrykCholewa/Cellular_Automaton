@@ -78,4 +78,20 @@ class TableTest{
 
     }
 
+    @Test
+    void makeNextGenerationTest() {
+
+        int[][] expect = {
+                {0, 0, 0, 0, 0},
+                {0, 1, 0, 1, 0},
+                {0, 0, 1, 1, 0},
+                {0, 0, 1, 0, 0},
+        };
+
+        int[][] result = table.getBoard();
+
+        assertArrayEquals( expect , result );
+
+    }
+
 }
