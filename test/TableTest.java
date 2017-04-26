@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class TableTest{
 
-    Table table = new Table(4, 5);
+    Table table;
 
     @BeforeEach
     void setUp() {
@@ -21,7 +21,7 @@ class TableTest{
                 {0,1,1,1,0},
         };
 
-        table.setBoard( board );
+        table = new Table( 4 , 5 , board );
 
     }
 

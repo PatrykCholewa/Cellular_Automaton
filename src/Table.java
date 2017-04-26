@@ -8,32 +8,25 @@ public class Table {
     private int columnNumber; //column
     private int [][]board;
 
-    public Table( int rowNumber , int columnNumber ){
+    public Table( int rowNumber , int columnNumber , int [][]board ){
 
         this.rowNumber = rowNumber;
         this.columnNumber = columnNumber;
         this.board = new int[rowNumber][columnNumber];
-
-    }
-
-    private void setCellValue( int m , int n, int value ) {
-
-        this.board[m][n] = value;
+        this.setBoard( board );
 
     }
 
     public void setBoard( int [][]board ){
 
-        if( board.length != rowNumber ){
-            throw new Error( "Board sizes do not match!" );
-        }
+        assert board.length == rowNumber ;
 
         for( int i = 0; i < rowNumber ; i++ ){
-            if( board[i].length != columnNumber ){
-                throw new Error( "Board sizes do not match!" );
-            }
+
+            assert board[i].length == columnNumber;
+
             for( int j = 0; j < columnNumber; j++ ){
-                this.setCellValue( i , j , board[i][j] );
+                this.board[i][j] = board[i][j];
             }
         }
 
