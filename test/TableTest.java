@@ -70,44 +70,20 @@ class TableTest{
     @Test
     void getBoardTest() {
 
-        int [][]expect = {
-                {0,0,1,0,0},
-                {0,0,0,1,0},
-                {0,1,1,1,0},
-                {0,0,0,0,0},
+        int[][] expect = {
+                {0, 0, 1, 0, 0},
+                {0, 0, 0, 1, 0},
+                {0, 1, 1, 1, 0},
+                {0, 0, 0, 0, 0},
         };
 
-        int [][]result = table.getBoard();
+        int[][] result = table.getBoard();
 
-        for( int i = 0 ; i < expect.length ; i++ ){
+        for (int i = 0; i < expect.length; i++) {
 
-            for( int j = 0 ; j < expect[i].length ; j++ ){
+            for (int j = 0; j < expect[i].length; j++) {
 
-                assertEquals( expect[i][j] , result[i][j] );
-
-            }
-
-        }
-
-    }
-
-    @Test
-    void makeNextGeneration() {
-
-        int [][]expect = {
-                {0,0,0,0,0},
-                {0,1,0,1,0},
-                {0,0,1,1,0},
-                {0,0,1,0,0},
-        };
-
-        int [][]result = table.getBoard();
-
-        for( int i = 0 ; i < expect.length ; i++ ){
-
-            for( int j = 0 ; j < expect[i].length ; j++ ){
-
-                assertEquals( expect[i][j] , result[i][j] );
+                assertEquals(expect[i][j], result[i][j]);
 
             }
 
