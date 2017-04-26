@@ -34,15 +34,10 @@ class TableTest{
     void setBoardTestError() {
 
         int [][]board = {{1},{1},{1},{1},{1},{1}};
-        boolean b = false;
 
-        try{
+        Throwable exception = assertThrows( Error.class, () -> {
             table.setBoard( board );
-        } catch( Error e){
-            b = true;
-        }
-
-        assertEquals( true , b );
+        });
 
     }
 
@@ -79,15 +74,7 @@ class TableTest{
 
         int[][] result = table.getBoard();
 
-        for (int i = 0; i < expect.length; i++) {
-
-            for (int j = 0; j < expect[i].length; j++) {
-
-                assertEquals(expect[i][j], result[i][j]);
-
-            }
-
-        }
+        assertArrayEquals( expect , result );
 
     }
 
