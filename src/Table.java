@@ -8,11 +8,17 @@ public class Table {
     private int columnNumber; //column
     private int [][]board;
 
-    public Table( int rowNumber , int columnNumber , int [][]board ){
+    public Table( int rowNumber , int columnNumber ){
 
         this.rowNumber = rowNumber;
         this.columnNumber = columnNumber;
         this.board = new int[rowNumber][columnNumber];
+
+    }
+
+    public Table( int rowNumber , int columnNumber , int [][]board ){
+
+        this( rowNumber , columnNumber );
         this.setBoard( board );
 
     }
@@ -44,9 +50,9 @@ public class Table {
 
     }
 
-    public int getCellValue( int m, int n ) throws IndexOutOfBoundsException {
+    public int getCellValue( int rowNumber, int columnNumber ) throws IndexOutOfBoundsException {
 
-        return board[m][n];
+        return board[rowNumber][columnNumber];
 
     }
 
@@ -57,7 +63,7 @@ public class Table {
     }
     public void makeNextGeneration(){
 
-        throw new UnsupportedOperationException( "Not supported yet!");
+       board = TableGenerationMaker.makeNextGeneration( this );
 
     }
     public void setBoundary( String boundaryTypeName ){
