@@ -13,11 +13,25 @@ public class TableGenerationMaker {
 
     }
 
+    public int getCellNewState( int i , int j ){
+
+        throw new UnsupportedOperationException( "Not supported yet." );
+
+    }
+
     public static int [][]makeNextGenerationBoard( Table table ){
 
         TableGenerationMaker tgm = new TableGenerationMaker( table );
 
-        throw new UnsupportedOperationException( "Not Finished yet!");
+        for( int i = 0; i < table.getRowNumber() ; i++ ){
+            for( int j = 0; j < table.getColumnNumber() ; j ++ ){
+
+                tgm.getCellNewState( i , j );
+
+            }
+        }
+
+        throw new UnsupportedOperationException( "Not supported yet.");
 
     }
 

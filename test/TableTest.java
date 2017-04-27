@@ -22,6 +22,8 @@ class TableTest{
         };
 
         table = new Table( 4 , 5 , board );
+        table.setBoundary( "End" );
+        table.setNeighbourhood( "Moore" );
 
     }
 
@@ -84,6 +86,20 @@ class TableTest{
         int[][] result = table.getBoard();
 
         assertArrayEquals( expect , result );
+
+    }
+
+    @Test
+    public void getBoundaryTest(){
+
+        assertEquals( "End" , table.getBoundary() );
+
+    }
+
+    @Test
+    public void getNeighbourhoodTest(){
+
+        assertEquals( "Moore" , table.getNeighbourhood() );
 
     }
 

@@ -4,9 +4,11 @@
 
 public class Table {
 
-    private int rowNumber; //row
-    private int columnNumber; //column
+    private int rowNumber;
+    private int columnNumber;
     private int [][]board;
+    private String boundary;
+    private String neighbourhood;
 
     public Table( int rowNumber , int columnNumber , int [][]board ){
 
@@ -57,20 +59,36 @@ public class Table {
     }
     public void makeNextGeneration(){
 
-       board = TableGenerationMaker.makeNextGenerationBoard( this );
+        board = TableGenerationMaker.makeNextGenerationBoard( this );
 
     }
-    public void setBoundary( String boundaryTypeName ){
+    public void setBoundary( String boundaryName ){
 
-        throw new UnsupportedOperationException( "Not supported yet!");
-
-    }
-
-    public void setNeighbourhood( String neighbourhoodTypeName ){
-
-        throw new UnsupportedOperationException( "Not supported yet!");
+        this.boundary = boundaryName;
 
     }
 
+    public String getBoundary(){
+
+        return boundary;
+
+    }
+
+    public void setNeighbourhood( String neighbourhoodName ){
+
+        this.neighbourhood = neighbourhoodName;
+
+    }
+
+    public String getNeighbourhood(){
+
+        return neighbourhood;
+    }
+
+    public void setRules( /* ??? */ ){
+
+        throw new UnsupportedOperationException( "Not supported yet! ");
+
+    }
 
 }
