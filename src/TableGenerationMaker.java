@@ -13,7 +13,7 @@ public class TableGenerationMaker {
 
     }
 
-    public static int [][]makeNextGeneration( Table table ){
+    public static int [][]makeNextGenerationBoard( Table table ){
 
         TableGenerationMaker tgm = new TableGenerationMaker( table );
 

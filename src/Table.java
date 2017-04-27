@@ -57,7 +57,7 @@ public class Table {
     }
     public void makeNextGeneration(){
 
-       board = TableGenerationMaker.makeNextGeneration( this );
+       board = TableGenerationMaker.makeNextGenerationBoard( this );
 
     }
     public void setBoundary( String boundaryTypeName ){

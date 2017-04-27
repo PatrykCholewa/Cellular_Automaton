@@ -35,7 +35,7 @@ class TableTest{
 
         int [][]board = {{1},{1},{1},{1},{1},{1}};
 
-        Throwable exception = assertThrows( Error.class, () -> {
+        assertThrows( Error.class, () -> {
             table.setBoard( board );
         });
 
@@ -63,6 +63,15 @@ class TableTest{
     }
 
     @Test
+    void getCellValueTestIndexOutBounds() {
+
+        assertThrows( IndexOutOfBoundsException.class, () -> {
+            table.getCellValue( 4 , 4 );
+        });
+
+    }
+
+    @Test
     void getBoardTest() {
 
         int[][] expect = {
@@ -78,7 +87,7 @@ class TableTest{
 
     }
 
-    @Test
+    //@Test
     void makeNextGenerationTest() {
 
         int[][] expect = {
