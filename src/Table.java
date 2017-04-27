@@ -8,17 +8,11 @@ public class Table {
     private int columnNumber; //column
     private int [][]board;
 
-    public Table( int rowNumber , int columnNumber ){
+    public Table( int rowNumber , int columnNumber , int [][]board ){
 
         this.rowNumber = rowNumber;
         this.columnNumber = columnNumber;
         this.board = new int[rowNumber][columnNumber];
-
-    }
-
-    public Table( int rowNumber , int columnNumber , int [][]board ){
-
-        this( rowNumber , columnNumber );
         this.setBoard( board );
 
     }

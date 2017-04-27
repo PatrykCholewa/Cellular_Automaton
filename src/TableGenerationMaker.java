@@ -3,13 +3,13 @@
  */
 public class TableGenerationMaker {
 
-    Table oldTable;
-    Table newTable;
+    private int [][]oldTable;
+    private int [][]newTable;
 
     private TableGenerationMaker( Table table ){
 
-        this.oldTable = table;
-        this.newTable = new Table( table.getRowNumber() , table.getColumnNumber() );
+        this.oldTable = table.getBoard();
+        this.newTable = new int[table.getRowNumber()][table.getColumnNumber()];
 
     }
 
