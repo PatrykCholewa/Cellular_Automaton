@@ -21,9 +21,15 @@ class TableTest{
                 {0,0,0,0,0},
         };
 
+        String []rules = {
+                "1/3/1/0",
+                "1/23/1/0",
+        };
+
         table = new Table( 4 , 5 , board );
-        table.setBoundary( "End" );
+        table.setBoundary( "Void" );
         table.setNeighbourhood( "Moore" );
+        table.setRules( 2 , rules );
 
     }
 
@@ -37,23 +43,23 @@ class TableTest{
 
         int [][]board = {{1},{1},{1},{1},{1},{1}};
 
-        assertThrows( Error.class, () -> {
+        assertThrows( AssertionError.class, () -> {
             table.setBoard( board );
         });
 
     }
 
     @Test
-    void getRowNumberTest() {
+    void getNumberOfRowsTest() {
 
-        assertEquals( 4 , table.getRowNumber() );
+        assertEquals( 4 , table.getNumberOfRows() );
 
     }
 
     @Test
-    void getColumnNumberTest() {
+    void getNumberOfColumnsTest() {
 
-        assertEquals( 5 , table.getColumnNumber() );
+        assertEquals( 5 , table.getNumberOfColumns() );
 
     }
 
@@ -92,7 +98,7 @@ class TableTest{
     @Test
     public void getBoundaryTest(){
 
-        assertEquals( "End" , table.getBoundary() );
+        assertEquals( "Void" , table.getBoundary() );
 
     }
 
@@ -116,6 +122,38 @@ class TableTest{
         int[][] result = table.getBoard();
 
         assertArrayEquals( expect , result );
+
+    }
+
+    @Test
+    void getRulesTest() {
+
+        String []rules = {
+                "1/3/1/0",
+                "1/23/1/0",
+        };
+
+        assertArrayEquals( rules , table.getRules() );
+
+    }
+
+    @Test
+    void setRulesTestInstantiationError() {
+
+        String []rules = {
+                "1/3/1/0",
+        };
+
+        assertThrows( InstantiationError.class, () -> {
+            table.setRules( 2 , rules );
+        });
+
+    }
+
+    @Test
+    void getNumberOfStatesTest() {
+
+        assertEquals( 2 , table.getNumberOfStates() );
 
     }
 

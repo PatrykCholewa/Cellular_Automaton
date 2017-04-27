@@ -4,51 +4,53 @@
 
 public class Table {
 
-    private int rowNumber;
-    private int columnNumber;
+    private int numberOfRows;
+    private int numberOfColumns;
     private int [][]board;
+    private int numberOfStates;
     private String boundary;
     private String neighbourhood;
+    private String []rules;
 
-    public Table( int rowNumber , int columnNumber , int [][]board ){
+    public Table( int numberOfRows , int numberOfColumns , int [][]board ){
 
-        this.rowNumber = rowNumber;
-        this.columnNumber = columnNumber;
-        this.board = new int[rowNumber][columnNumber];
+        this.numberOfRows = numberOfRows;
+        this.numberOfColumns = numberOfColumns;
+        this.board = new int[numberOfRows][numberOfColumns];
         this.setBoard( board );
 
     }
 
     public void setBoard( int [][]board ){
 
-        assert board.length == rowNumber ;
+        assert board.length == numberOfRows;
 
-        for( int i = 0; i < rowNumber ; i++ ){
+        for(int i = 0; i < numberOfRows; i++ ){
 
-            assert board[i].length == columnNumber;
+            assert board[i].length == numberOfColumns;
 
-            for( int j = 0; j < columnNumber; j++ ){
+            for(int j = 0; j < numberOfColumns; j++ ){
                 this.board[i][j] = board[i][j];
             }
         }
 
     }
 
-    public int getRowNumber(){
+    public int getNumberOfRows(){
 
-        return rowNumber;
-
-    }
-
-    public int getColumnNumber(){
-
-        return columnNumber;
+        return numberOfRows;
 
     }
 
-    public int getCellValue( int rowNumber, int columnNumber ) throws IndexOutOfBoundsException {
+    public int getNumberOfColumns(){
 
-        return board[rowNumber][columnNumber];
+        return numberOfColumns;
+
+    }
+
+    public int getCellValue( int numberOfRows , int numberOfColumns ) throws IndexOutOfBoundsException {
+
+        return board[numberOfRows][numberOfColumns];
 
     }
 
@@ -83,11 +85,30 @@ public class Table {
     public String getNeighbourhood(){
 
         return neighbourhood;
+
     }
 
-    public void setRules( /* ??? */ ){
+    public void setRules( int numberOfStates , String []rules ){
 
-        throw new UnsupportedOperationException( "Not supported yet! ");
+        this.numberOfStates = numberOfStates;
+
+        if( numberOfStates <= rules.length ) {
+            this.rules = rules;
+        } else {
+            throw new InstantiationError( "There is too less state rule rows!");
+        }
+
+    }
+
+    public String []getRules(){
+
+        return rules;
+
+    }
+
+    public int getNumberOfStates(){
+
+        return numberOfStates;
 
     }
 

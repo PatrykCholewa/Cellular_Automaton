@@ -9,7 +9,7 @@ public class TableGenerationMaker {
     private TableGenerationMaker( Table table ){
 
         this.oldTable = table.getBoard();
-        this.newTable = new int[table.getRowNumber()][table.getColumnNumber()];
+        this.newTable = new int[table.getNumberOfRows()][table.getNumberOfColumns()];
 
     }
 
@@ -23,8 +23,8 @@ public class TableGenerationMaker {
 
         TableGenerationMaker tgm = new TableGenerationMaker( table );
 
-        for( int i = 0; i < table.getRowNumber() ; i++ ){
-            for( int j = 0; j < table.getColumnNumber() ; j ++ ){
+        for(int i = 0; i < table.getNumberOfRows() ; i++ ){
+            for(int j = 0; j < table.getNumberOfColumns() ; j ++ ){
 
                 tgm.getCellNewState( i , j );
 
