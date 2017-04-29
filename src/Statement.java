@@ -75,9 +75,10 @@ public class Statement {
 
     }
 
-    private void Statement( String statement , int numberOfStates ){
+    public Statement( String statement , int numberOfStates ){
 
         this.numberOfStates = numberOfStates;
+        this.howManyNeighboursNeeded = new boolean[10];
 
         int leftIndex;
         int rightIndex = -1;
@@ -109,4 +110,51 @@ public class Statement {
 
     }
 
+
+    public int getWhatNeighbourStateIsDemanded() {
+        return whatNeighbourStateIsDemanded;
+    }
+
+    public int getChangeToWhichStateIfStatementIsTrue() {
+        return changeToWhichStateIfStatementIsTrue;
+    }
+
+    public int getChangeToWhichStateIfStatementIsFalse() {
+        return changeToWhichStateIfStatementIsFalse;
+    }
+
+    public String getNeighbourSums(){
+
+        String sums = "";
+
+        for( int j = 0 ; j < 10 ; j++ ){
+            if( howManyNeighboursNeeded[j] == true ){
+                sums = sums + Integer.toString(j);
+            }
+        }
+
+        return sums;
+    }
+
+    public String getStatement(){
+
+        String rule = "";
+
+        rule = rule + Integer.toString(whatNeighbourStateIsDemanded);
+        rule = rule + "/";
+        rule = rule + getNeighbourSums();
+        rule = rule + "/";
+        rule = rule + Integer.toString(changeToWhichStateIfStatementIsTrue);
+        rule = rule + "/";
+        rule = rule + Integer.toString(changeToWhichStateIfStatementIsFalse);
+
+        return rule;
+
+    }
+
+    public boolean checkIsThatSumOfNeighboursNeeded( int neighbourSum ) {
+
+        return howManyNeighboursNeeded[neighbourSum];
+
+    }
 }
