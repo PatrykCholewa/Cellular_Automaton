@@ -28,12 +28,21 @@ class RulesTest {
     @Test
     void getNeighbourSumsTest() {
 
-
+        assertEquals( "12" , rules.getNeighbourSums( 3 ) );
 
     }
 
     @Test
     void getRulesTest() {
+
+        String []expect = {
+                "0/9/1/0",
+                "1/9/1/2",
+                "2/9/1/3",
+                "1/12/1/3",
+        };
+
+        assertArrayEquals( expect , rules.getRules() );
 
     }
 
