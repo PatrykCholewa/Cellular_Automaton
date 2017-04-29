@@ -39,4 +39,40 @@ class RulesTest {
 
     }
 
+    @Test
+    void getnumberOfStatesTest() {
+
+        assertEquals( 4 , rules.getnumberOfStates() );
+
+    }
+
+    @Test
+    void getDemandedNeighbourStateTest() {
+
+       assertEquals( 2 , rules.getDemandedNeighbourState( 2 ));
+
+    }
+
+    @Test
+    void checkIsThatSumOfNeighboursNeededTest() {
+
+        assertTrue( rules.checkIsThatSumOfNeighboursNeeded( 2 ,9));
+        assertFalse( rules.checkIsThatSumOfNeighboursNeeded( 3 , 4));
+
+    }
+
+    @Test
+    void getStateOfTrueStatementTest() {
+
+        assertEquals( 1 , rules.getStateOfTrueStatement( 1));
+
+    }
+
+    @Test
+    void getStateOfFalseStatementTest() {
+
+        assertEquals( 3 ,rules.getStateOfFalseStatement(3));
+
+    }
+
 }
