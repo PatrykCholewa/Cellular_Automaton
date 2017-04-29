@@ -1,3 +1,4 @@
+import java.util.IllegalFormatConversionException;
 import java.util.IllegalFormatException;
 import java.util.MissingFormatArgumentException;
 
@@ -7,7 +8,8 @@ import java.util.MissingFormatArgumentException;
 
 public class Rules {
 
-    int numberOfStates;
+    private int numberOfStates;
+
     //index is number of observer state
     private int []whatNeighbourStateIsDemanded;
     private boolean [][]howManyNeighboursNeeded;
@@ -23,9 +25,25 @@ public class Rules {
         } throw new IllegalArgumentException( "Argument state over number of statements." );
     }
 
-    private void giveListOfExpectedNumberOfNeighbours( int index , String neighboursSums ) throws NumberFormatException {
+    private void giveListOfExpectedNumberOfNeighbours( int index , String neighboursSums ){
 
+        for( int i = 0 ; i < 10 ; i++ ){
+            howManyNeighboursNeeded[index][i] = false;
+        }
 
+        for( int i = 0 ; i < neighboursSums.length() ; i++ ){
+            for( int j = 0 ; j < 10; j++ ){
+                try{
+                    howManyNeighboursNeeded[index][Character.getNumericValue(neighboursSums.charAt(i))] = true;
+                } catch ( IndexOutOfBoundsException e ){
+                    throw new IllegalArgumentException( "Illegal symbol in statement.");
+                }
+            }
+        }
+
+        for( int i = 0 ; i < neighboursSums.length() ; i++ ){
+
+     }
 
     }
 
@@ -74,7 +92,7 @@ public class Rules {
                 rightIndex = statement.indexOf('/', leftIndex);
 
                 if (rightIndex != -1) {
-                    this.giveStatementPart(indexOfStatement, statement.substring(leftIndex, rightIndex), 1);
+                    this.giveStatementPart(indexOfStatement, statement.substring(leftIndex, rightIndex - 1), 1);
                 } else {
                     throw new MissingFormatArgumentException("There's no first '/' in rule statement.");
                 }
@@ -93,7 +111,7 @@ public class Rules {
 
     }
 
-    public Rules(String []rules , String neighbourhood , String boundary ){
+    public Rules(String []rules){
 
         numberOfStates = rules.length;
         whatNeighbourStateIsDemanded = new int[rules.length];
@@ -110,6 +128,43 @@ public class Rules {
             }
 
         }
+
+    }
+
+    public String getNeighbourSums( int index ){
+
+        String sums = "";
+
+        for( int j = 0 ; j < 10 ; j++ ){
+            if( howManyNeighboursNeeded[index][j] == true ){
+                sums = sums + Integer.toString(j);
+            }
+        }
+
+        return sums;
+    }
+
+    public String []getRules(){
+
+        String []rules = new String[numberOfStates];
+
+        for( int i = 0 ; i < numberOfStates ; i ++ ){
+
+            String rule = "";
+
+            rule = rule + Integer.toString(whatNeighbourStateIsDemanded[i]);
+            rule = rule + "/";
+            rule = rule + getNeighbourSums( i );
+            rule = rule + "/";
+            rule = rule + Integer.toString(changeToWhichStateIfStatementIsTrue[i]);
+            rule = rule + "/";
+            rule = rule + Integer.toString(changeToWhichStateIfStatementIsFalse[i]);
+
+            rules[i] = rule;
+
+        }
+
+        return rules;
 
     }
 

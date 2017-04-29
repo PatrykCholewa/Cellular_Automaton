@@ -25,7 +25,7 @@ public class Table {
 
     }
 
-    public void setBoard( int [][]board ){
+    public void setBoard( int [][]board ) throws AssertionError {
 
         assert board.length == numberOfRows;
 
