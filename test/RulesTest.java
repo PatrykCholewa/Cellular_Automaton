@@ -26,13 +26,6 @@ class RulesTest {
     }
 
     @Test
-    void getNeighbourSumsTest() {
-
-        assertEquals( "12" , rules.getNeighbourSums( 3 ) );
-
-    }
-
-    @Test
     void getRulesTest() {
 
         String []expect = {
