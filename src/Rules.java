@@ -38,4 +38,34 @@ public class Rules {
 
     }
 
+    public int getnumberOfStates(){
+
+        return statements.length;
+
+    }
+
+    public int getDemandedNeighbourState( int state ){
+
+        return statements[state].getWhatNeighbourStateIsDemanded();
+
+    }
+
+    public boolean checkIsThatSumOfNeighboursNeeded( int state , int numberOfNeighbours ){
+
+        return statements[state].checkIsThatSumOfNeighboursNeeded( numberOfNeighbours );
+
+    }
+
+    public int getStateOfTrueStatement( int state ){
+
+        return statements[state].getChangeToWhichStateIfStatementIsTrue();
+
+    }
+
+    public int getStateOfFalseStatement( int state ){
+
+        return statements[state].getChangeToWhichStateIfStatementIsFalse();
+
+    }
+
 }
