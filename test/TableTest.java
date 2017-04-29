@@ -29,7 +29,7 @@ class TableTest{
         table = new Table( 4 , 5 , board );
         table.setBoundary( "Void" );
         table.setNeighbourhood( "Moore" );
-        table.setRules( 2 , rules );
+        table.setRules( rules );
 
     }
 
@@ -134,26 +134,6 @@ class TableTest{
         };
 
         assertArrayEquals( rules , table.getRules() );
-
-    }
-
-    @Test
-    void setRulesTestInstantiationError() {
-
-        String []rules = {
-                "1/3/1/0",
-        };
-
-        assertThrows( InstantiationError.class, () -> {
-            table.setRules( 2 , rules );
-        });
-
-    }
-
-    @Test
-    void getNumberOfStatesTest() {
-
-        assertEquals( 2 , table.getNumberOfStates() );
 
     }
 

@@ -1,3 +1,5 @@
+import java.util.IllegalFormatException;
+
 /**
  * Created by Patryk Cholewa on 25.04.2017.
  */
@@ -7,10 +9,12 @@ public class Table {
     private int numberOfRows;
     private int numberOfColumns;
     private int [][]board;
-    private int numberOfStates;
+    private TableGenerationMaker tgm;
+    //
     private String boundary;
     private String neighbourhood;
     private String []rules;
+    //
 
     public Table( int numberOfRows , int numberOfColumns , int [][]board ){
 
@@ -88,27 +92,15 @@ public class Table {
 
     }
 
-    public void setRules( int numberOfStates , String []rules ){
+    public void setRules( String []rules ){
 
-        this.numberOfStates = numberOfStates;
-
-        if( numberOfStates <= rules.length ) {
             this.rules = rules;
-        } else {
-            throw new InstantiationError( "There is too less state rule rows!");
-        }
 
     }
 
     public String []getRules(){
 
         return rules;
-
-    }
-
-    public int getNumberOfStates(){
-
-        return numberOfStates;
 
     }
 

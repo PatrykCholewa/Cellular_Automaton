@@ -1,6 +1,9 @@
+import java.util.IllegalFormatException;
+
 /**
  * Created by Patryk on 27.04.2017.
  */
+
 public class TableGenerationMaker {
 
     private int [][]oldTable;
