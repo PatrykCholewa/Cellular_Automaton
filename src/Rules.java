@@ -22,7 +22,9 @@ public class Rules {
 
         if( Integer.parseInt(demand) < numberOfStates ) {
             whatNeighbourStateIsDemanded[index] = Integer.parseInt(demand);
-        } throw new IllegalArgumentException( "Argument state over number of statements." );
+        } else {
+            throw new IllegalArgumentException( "Argument state over number of statements." );
+        }
     }
 
     private void giveListOfExpectedNumberOfNeighbours( int index , String neighboursSums ){
@@ -41,17 +43,15 @@ public class Rules {
             }
         }
 
-        for( int i = 0 ; i < neighboursSums.length() ; i++ ){
-
-     }
-
     }
 
     private void giveTrueResult( int index , String result ) throws NumberFormatException {
 
         if( Integer.parseInt(result) < numberOfStates ) {
             changeToWhichStateIfStatementIsTrue[index] = Integer.parseInt( result );
-        } throw new IllegalArgumentException( "Argument state over number of statements." );
+        } else {
+            throw new IllegalArgumentException( "Argument state over number of statements." );
+        }
 
     }
 
@@ -59,24 +59,29 @@ public class Rules {
 
         if( Integer.parseInt(result) < numberOfStates ) {
             changeToWhichStateIfStatementIsFalse[index] = Integer.parseInt( result );
-        } throw new IllegalArgumentException( "Argument state over number of statements." );
+        } else {
+            throw new IllegalArgumentException( "Argument state over number of statements." );
+        }
 
     }
 
-    private void giveStatementPart( int indexOfStatement ,String fragment , int numberOfPart ){
+    private void giveStatementPart( int indexOfStatement ,String fragment , int numberOfPart )
+            throws  IllegalArgumentException,
+                    NumberFormatException{
 
         if( numberOfPart == 1 ){
             this.giveDemand( indexOfStatement , fragment );
         }
-        if( numberOfPart == 1 ) {
+        if( numberOfPart == 2 ) {
             this.giveListOfExpectedNumberOfNeighbours(indexOfStatement, fragment );
         }
-        if( numberOfPart == 1 ) {
+        if( numberOfPart == 3 ) {
             this.giveTrueResult(indexOfStatement, fragment );
         }
-        if( numberOfPart == 1 ) {
+        if( numberOfPart == 4 ) {
             this.giveFalseResult(indexOfStatement, fragment );
         }
+
     }
 
     private void giveStatement( String statement , int indexOfStatement ){
@@ -92,7 +97,7 @@ public class Rules {
                 rightIndex = statement.indexOf('/', leftIndex);
 
                 if (rightIndex != -1) {
-                    this.giveStatementPart(indexOfStatement, statement.substring(leftIndex, rightIndex - 1), 1);
+                    this.giveStatementPart(indexOfStatement, statement.substring(leftIndex, rightIndex ), i);
                 } else {
                     throw new MissingFormatArgumentException("There's no first '/' in rule statement.");
                 }
@@ -123,8 +128,8 @@ public class Rules {
 
             try {
                 this.giveStatement(rules[i] , i );
-            } catch( Exception e ) {
-                throw new MissingFormatArgumentException(e.getMessage() + " Problem occurred in statement with index " + Integer.toString(i));
+            }catch( IllegalArgumentException e ) {
+                throw new IllegalArgumentException( e.getMessage() + " Problem occurred in statement with index " + Integer.toString(i));
             }
 
         }

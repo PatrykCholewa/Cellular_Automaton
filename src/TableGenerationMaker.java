@@ -14,7 +14,7 @@ public class TableGenerationMaker {
 
         oldTable = table.getBoard();
         newTable = new int[table.getNumberOfRows()][table.getNumberOfColumns()];
-        rules = new Rules( table.getRules() , table.getNeighbourhood() , table.getBoundary() );
+        rules = new Rules( table.getRules() );
 
     }
 

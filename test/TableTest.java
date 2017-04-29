@@ -33,11 +33,6 @@ class TableTest{
 
     }
 
-    @AfterEach
-    void tearDown() {
-
-    }
-
     @Test
     void setBoardTestError() {
 
