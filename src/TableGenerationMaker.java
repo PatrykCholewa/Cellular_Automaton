@@ -5,11 +5,13 @@ public class TableGenerationMaker {
 
     private int [][]oldTable;
     private int [][]newTable;
+    private Rules rules;
 
     private TableGenerationMaker( Table table ){
 
-        this.oldTable = table.getBoard();
-        this.newTable = new int[table.getNumberOfRows()][table.getNumberOfColumns()];
+        oldTable = table.getBoard();
+        newTable = new int[table.getNumberOfRows()][table.getNumberOfColumns()];
+        rules = new Rules( table.getRules() , table.getNeighbourhood() , table.getBoundary() );
 
     }
 
