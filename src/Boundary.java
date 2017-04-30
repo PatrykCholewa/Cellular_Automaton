@@ -1,19 +1,30 @@
+import boundary.BoundaryTemplate;
+
 /**
  * Created by Patryk on 30.04.2017.
  */
 public class Boundary {
 
-    private String name;
+
+    private boundary.BoundaryTemplate boundaryObject;
 
     public Boundary( String name ){
 
-        this.name = name;
-
+        try{
+            if( name.contains("Void")) {
+                Class cls = Class.forName( "boundary.Void" );
+                boundaryObject = ( boundary.BoundaryTemplate ) cls.newInstance();
+            }
+        } catch( ClassNotFoundException e ){
+            throw new AssertionError( "There's no Void class in package!");
+        } catch ( InstantiationException | IllegalAccessException e ) {
+            throw new InternalError("Problem with boundary class!");
+        }
     }
 
     public String getName(){
 
-        return name;
+        return boundaryObject.returnName();
 
     }
 
