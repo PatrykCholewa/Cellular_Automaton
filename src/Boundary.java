@@ -28,9 +28,9 @@ public class Boundary {
 
     }
 
-    public int checkStateByIndex( int [][]board , int i , int j ){
+    public int checkStateByIndex( int [][]board , int rowIndex , int columnIndex ){
 
-        throw new UnsupportedOperationException( "Not supported yet!" );
+       return boundaryObject.checkStateByIndex( board , rowIndex , columnIndex );
 
     }
 
