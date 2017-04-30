@@ -20,26 +20,53 @@ public class TableGenerationMaker {
 
     }
 
-    private int countCellNewState( int i , int j ){
+    private int countCellNewState( int [][]board , int rowIndex , int columnIndex ){
 
-        throw new UnsupportedOperationException( "Not supported yet!" );
+       int [][]neighbours = neighbourhood.tellWhoIsNeighbour( rowIndex, columnIndex );
+       int sum = 0;
+       int thisCellState = board[rowIndex][columnIndex];
+       int demand = rules.getDemandedNeighbourState( thisCellState );
+
+       for( int i = 0 ; i < neighbours.length ; i ++ ){
+           if( boundary.checkStateByIndex( board , neighbours[i][0] , neighbours[i][1] ) == demand ){
+               sum++;
+           }
+       }
+
+       if( rules.checkIsThatSumOfNeighboursNeeded( thisCellState , sum ) ){
+           return rules.getStateOfTrueStatement( thisCellState );
+       } else {
+           return rules.getStateOfFalseStatement( thisCellState );
+       }
 
     }
 
-    public int [][]makeNextGenerationBoard( Table table ){
+    public int [][]makeNextGenerationBoard( int [][]oldBoard ){
 
-        TableGenerationMaker tgm = new TableGenerationMaker();
+        if( newBoard == null ) {
+            throw new NullPointerException( "Board not set." );
+        } else
+        if( rules == null ){
+            throw new NullPointerException( "Rules not set." );
+        } else
+        if( neighbourhood == null ){
+            throw new NullPointerException( "Neighbourhood not set." );
+        } else
+        if( boundary == null ){
+            throw new NullPointerException( "Boundary not set." );
+        } else {
 
-        for(int i = 0; i < table.getNumberOfRows() ; i++ ){
-            for(int j = 0; j < table.getNumberOfColumns() ; j ++ ){
+            for (int i = 0; i < oldBoard.length; i++) {
+                for (int j = 0; j < oldBoard[i].length; j++) {
 
-                tgm.countCellNewState( i , j );
+                    newBoard[i][j] = countCellNewState(oldBoard, i, j);
 
+                }
             }
+
+            return newBoard;
+
         }
-
-        throw new UnsupportedOperationException( "Not supported yet.");
-
     }
 
     public String []getRules() {

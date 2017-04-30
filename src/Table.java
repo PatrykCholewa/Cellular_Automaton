@@ -58,11 +58,13 @@ public class Table {
         return board;
 
     }
+
     public void makeNextGeneration(){
 
-        board = tgm.makeNextGenerationBoard( this );
+        board = tgm.makeNextGenerationBoard( board );
 
     }
+
     public void setBoundary( String boundaryName ){
 
         tgm.setBoundary( boundaryName );

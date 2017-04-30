@@ -104,8 +104,8 @@ class TableTest{
 
     }
 
-    //@Test
-    void makeNextGenerationTest() {
+    @Test
+    public void makeNextGenerationTest() {
 
         int[][] expect = {
                 {0, 0, 0, 0, 0},
@@ -114,9 +114,9 @@ class TableTest{
                 {0, 0, 1, 0, 0},
         };
 
-        int[][] result = table.getBoard();
+        table.makeNextGeneration();
 
-        assertArrayEquals( expect , result );
+        assertArrayEquals( expect , table.getBoard() );
 
     }
 

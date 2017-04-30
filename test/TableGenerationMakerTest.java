@@ -10,8 +10,6 @@ class TableGenerationMakerTest {
 
     TableGenerationMaker tgm;
 
-    Rules rules;
-
     @BeforeEach
     void setUp() {
 
@@ -26,7 +24,7 @@ class TableGenerationMakerTest {
         tgm.setRules( rules );
         tgm.setNeighbourhood( "Moore" );
         tgm.setBoundary( "Void" );
-        tgm.setNewBoard( 4 , 5 );
+        tgm.setNewBoard( 4 , 4 );
 
     }
 
@@ -55,6 +53,27 @@ class TableGenerationMakerTest {
     void getBoundaryTest() {
 
         assertEquals( "Void" , tgm.getBoundary() );
+
+    }
+
+    @Test
+    void makeNextGenerationBoard() {
+
+        int [][]oldBoard = {
+                {0,0,0,0},
+                {0,0,0,0},
+                {3,2,1,3},
+                {0,0,0,0}
+        };
+
+        int [][]newBoard = {
+                {0,0,0,0},
+                {0,0,0,0},
+                {3,3,2,1},
+                {0,0,0,0}
+        };
+
+        assertArrayEquals( newBoard , tgm.makeNextGenerationBoard( oldBoard ));
 
     }
 
