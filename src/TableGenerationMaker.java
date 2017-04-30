@@ -50,19 +50,23 @@ public class TableGenerationMaker {
         this.rules = new Rules( rules );
     }
 
-    public Neighbourhood getNeighbourhood() {
-        return neighbourhood;
+    public String getNeighbourhood() {
+        return neighbourhood.getName();
     }
 
-    public void setNeighbourhood(Neighbourhood neighbourhood) {
-        this.neighbourhood = neighbourhood;
+    public void setNeighbourhood( String Name ) {
+        neighbourhood = new Neighbourhood( Name );
     }
 
-    public Boundary getBoundary() {
-        return boundary;
+    public String getBoundary() {
+        return boundary.getName();
     }
 
-    public void setBoundary(Boundary boundary) {
-        this.boundary = boundary;
+    public void setBoundary( String Name ) {
+        boundary = new Boundary( Name );
+    }
+
+    public void setNewBoard( int numberOfRows , int numberOfColumns ) {
+        this.newBoard = new int[numberOfRows][numberOfColumns];
     }
 }

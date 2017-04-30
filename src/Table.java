@@ -1,5 +1,3 @@
-import java.util.IllegalFormatException;
-
 /**
  * Created by Patryk Cholewa on 25.04.2017.
  */
@@ -10,10 +8,6 @@ public class Table {
     private int numberOfColumns;
     private int [][]board;
     private TableGenerationMaker tgm = new TableGenerationMaker();
-    //
-    private String boundary;
-    private String neighbourhood;
-    //
 
     public Table( int numberOfRows , int numberOfColumns , int [][]board ){
 
@@ -36,6 +30,8 @@ public class Table {
                 this.board[i][j] = board[i][j];
             }
         }
+
+        tgm.setNewBoard( numberOfRows , numberOfColumns );
 
     }
 
@@ -69,25 +65,25 @@ public class Table {
     }
     public void setBoundary( String boundaryName ){
 
-        this.boundary = boundaryName;
+        tgm.setBoundary( boundaryName );
 
     }
 
     public String getBoundary(){
 
-        return boundary;
+        return tgm.getBoundary();
 
     }
 
     public void setNeighbourhood( String neighbourhoodName ){
 
-        this.neighbourhood = neighbourhoodName;
+        tgm.setNeighbourhood( neighbourhoodName );
 
     }
 
     public String getNeighbourhood(){
 
-        return neighbourhood;
+        return tgm.getNeighbourhood();
 
     }
 
