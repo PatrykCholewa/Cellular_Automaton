@@ -5,7 +5,6 @@ import boundary.BoundaryTemplate;
  */
 public class Boundary {
 
-
     private boundary.BoundaryTemplate boundaryObject;
 
     public Boundary( String name ){

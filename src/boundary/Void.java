@@ -3,8 +3,9 @@ package boundary;
 /**
  * Created by Patryk on 30.04.2017.
  */
-public class Void implements BoundaryTemplate{
+public class Void implements BoundaryTemplate {
 
+    @Override
     public int checkStateByIndex( int [][]board , int rowIndex , int columnIndex ){
 
         if( rowIndex < board.length && rowIndex >= 0 ){
@@ -17,6 +18,7 @@ public class Void implements BoundaryTemplate{
 
     }
 
+    @Override
     public String returnName(){
 
         return "Void";
