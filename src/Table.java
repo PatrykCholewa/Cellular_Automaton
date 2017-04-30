@@ -9,11 +9,10 @@ public class Table {
     private int numberOfRows;
     private int numberOfColumns;
     private int [][]board;
-    private TableGenerationMaker tgm;
+    private TableGenerationMaker tgm = new TableGenerationMaker();
     //
     private String boundary;
     private String neighbourhood;
-    private String []rules;
     //
 
     public Table( int numberOfRows , int numberOfColumns , int [][]board ){
@@ -94,13 +93,13 @@ public class Table {
 
     public void setRules( String []rules ){
 
-            this.rules = rules;
+        tgm.setRules( rules );
 
     }
 
     public String []getRules(){
 
-        return rules;
+        return tgm.getRules();
 
     }
 

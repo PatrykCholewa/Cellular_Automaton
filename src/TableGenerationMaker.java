@@ -6,15 +6,17 @@ import java.util.IllegalFormatException;
 
 public class TableGenerationMaker {
 
-    private int [][]oldTable;
-    private int [][]newTable;
+    private int [][]newBoard;
     private Rules rules;
+    private Neighbourhood neighbourhood;
+    private Boundary boundary;
 
-    private TableGenerationMaker( Table table ){
+    public TableGenerationMaker(){
 
-        oldTable = table.getBoard();
-        newTable = new int[table.getNumberOfRows()][table.getNumberOfColumns()];
-        rules = new Rules( table.getRules() );
+        this.newBoard = null;
+        this.rules = null;
+        this.neighbourhood = null;
+        this.boundary = null;
 
     }
 
@@ -26,7 +28,7 @@ public class TableGenerationMaker {
 
     public static int [][]makeNextGenerationBoard( Table table ){
 
-        TableGenerationMaker tgm = new TableGenerationMaker( table );
+        TableGenerationMaker tgm = new TableGenerationMaker();
 
         for(int i = 0; i < table.getNumberOfRows() ; i++ ){
             for(int j = 0; j < table.getNumberOfColumns() ; j ++ ){
@@ -40,4 +42,27 @@ public class TableGenerationMaker {
 
     }
 
+    public String []getRules() {
+        return rules.getRules();
+    }
+
+    public void setRules( String []rules ) {
+        this.rules = new Rules( rules );
+    }
+
+    public Neighbourhood getNeighbourhood() {
+        return neighbourhood;
+    }
+
+    public void setNeighbourhood(Neighbourhood neighbourhood) {
+        this.neighbourhood = neighbourhood;
+    }
+
+    public Boundary getBoundary() {
+        return boundary;
+    }
+
+    public void setBoundary(Boundary boundary) {
+        this.boundary = boundary;
+    }
 }
