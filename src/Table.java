@@ -60,7 +60,7 @@ public class Table {
     }
     public void makeNextGeneration(){
 
-        board = TableGenerationMaker.makeNextGenerationBoard( this );
+        board = tgm.makeNextGenerationBoard( this );
 
     }
     public void setBoundary( String boundaryName ){

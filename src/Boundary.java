@@ -17,4 +17,10 @@ public class Boundary {
 
     }
 
+    public int checkStateByIndex( int [][]board , int i , int j ){
+
+        throw new UnsupportedOperationException( "Not supported yet!" );
+
+    }
+
 }
