@@ -26,10 +26,11 @@ class TableTest{
                 "1/23/1/0",
         };
 
-        table = new Table( 4 , 5 , board );
+        table = new Table( 4 ,5 );
         table.setBoundary( "Void" );
         table.setNeighbourhood( "Moore" );
         table.setRules( rules );
+        table.setBoard( board );
 
     }
 
@@ -61,7 +62,8 @@ class TableTest{
     @Test
     void getCellValueTest() {
 
-        assertEquals( 1 , table.getCellValue( 2 , 3));
+        table.setCellValue( 2 , 3 , 2);
+        assertEquals( 2 , table.getCellValue( 2 , 3));
 
     }
 

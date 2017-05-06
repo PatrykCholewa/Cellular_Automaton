@@ -9,12 +9,24 @@ public class Table {
     private int [][]board;
     private TableGenerationMaker tgm = new TableGenerationMaker();
 
-    public Table( int numberOfRows , int numberOfColumns , int [][]board ){
+    public Table( int numberOfRows , int numberOfColumns ){
 
         this.numberOfRows = numberOfRows;
         this.numberOfColumns = numberOfColumns;
         this.board = new int[numberOfRows][numberOfColumns];
-        this.setBoard( board );
+
+    }
+
+    public void setCellValue( int rowNumber , int columnNumber , int value )
+            throws IndexOutOfBoundsException, NullPointerException{
+
+        try {
+            board[rowNumber][columnNumber] = value;
+        } catch ( IndexOutOfBoundsException e ){
+            throw new IndexOutOfBoundsException( e.getMessage() );
+        } catch ( NullPointerException e ){
+            throw  new IndexOutOfBoundsException( e.getMessage() );
+        }
 
     }
 
