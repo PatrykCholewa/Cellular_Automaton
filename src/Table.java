@@ -43,8 +43,6 @@ public class Table {
             }
         }
 
-        tgm.setNewBoard( numberOfRows , numberOfColumns );
-
     }
 
     public int getNumberOfRows(){

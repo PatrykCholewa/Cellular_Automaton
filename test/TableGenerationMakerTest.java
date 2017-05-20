@@ -24,7 +24,7 @@ class TableGenerationMakerTest {
         tgm.setRules( rules );
         tgm.setNeighbourhood( "Moore" );
         tgm.setBoundary( "Void" );
-        tgm.setNewBoard( 4 , 4 );
+
 
     }
 
