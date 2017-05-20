@@ -6,14 +6,12 @@ import java.util.IllegalFormatException;
 
 public class TableGenerationMaker {
 
-    private int [][]newBoard;
     private Rules rules;
     private Neighbourhood neighbourhood;
     private Boundary boundary;
 
     public TableGenerationMaker(){
 
-        this.newBoard = null;
         this.rules = null;
         this.neighbourhood = null;
         this.boundary = null;
@@ -43,9 +41,6 @@ public class TableGenerationMaker {
 
     public int [][]makeNextGenerationBoard( int [][]oldBoard ){
 
-        if( newBoard == null ) {
-            throw new NullPointerException( "Board not set." );
-        } else
         if( rules == null ){
             throw new NullPointerException( "Rules not set." );
         } else
@@ -55,6 +50,8 @@ public class TableGenerationMaker {
         if( boundary == null ){
             throw new NullPointerException( "Boundary not set." );
         } else {
+
+            int [][]newBoard = new int[oldBoard.length][ oldBoard[0].length ];
 
             for (int i = 0; i < oldBoard.length; i++) {
                 for (int j = 0; j < oldBoard[i].length; j++) {
@@ -93,7 +90,4 @@ public class TableGenerationMaker {
         boundary = new Boundary( Name );
     }
 
-    public void setNewBoard( int numberOfRows , int numberOfColumns ) {
-        this.newBoard = new int[numberOfRows][numberOfColumns];
-    }
 }
