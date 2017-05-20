@@ -13,7 +13,14 @@ public class Boundary {
             if( name.contains("Void")) {
                 Class cls = Class.forName( "boundary.Void" );
                 boundaryObject = ( boundary.BoundaryTemplate ) cls.newInstance();
+            } else if ( name.contains("Planet")){
+                Class cls = Class.forName( "boundary.Planet" );
+                boundaryObject = ( boundary.BoundaryTemplate ) cls.newInstance();
+            } else {
+                throw new IllegalArgumentException ( "Unsupported boundary." );
             }
+
+
         } catch( ClassNotFoundException e ){
             throw new AssertionError( "There's no Void class in package!");
         } catch ( InstantiationException | IllegalAccessException e ) {

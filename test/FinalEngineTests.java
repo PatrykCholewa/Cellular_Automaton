@@ -57,4 +57,54 @@ public class FinalEngineTests {
 
     }
 
+    @Test
+    void gliderPlanetGOLTest(){
+
+        int [][]board = {
+                { 0 , 0 , 0 , 0 , 0 },
+                { 0 , 0 , 1 , 0 , 0 },
+                { 0 , 0 , 0 , 1 , 0 },
+                { 0 , 1 , 1 , 1 , 0 },
+                { 0 , 0 , 0 , 0 , 0 },
+        };
+
+        String []rules = {
+                "1/3/1/0",
+                "1/23/1/0",
+        };
+
+        table = new Table( 5 , 5 );
+        table.setBoundary( "Planet" );
+        table.setNeighbourhood( "Moore" );
+        table.setBoard( board );
+        table.setRules( rules );
+
+        table.makeNextGeneration();
+
+        int [][]result1 = {
+                { 0 , 0 , 0 , 0 , 0 },
+                { 0 , 0 , 0 , 0 , 0 },
+                { 0 , 1 , 0 , 1 , 0 },
+                { 0 , 0 , 1 , 1 , 0 },
+                { 0 , 0 , 1 , 0 , 0 },
+        };
+
+        assertArrayEquals( result1 , table.getBoard() , "iter1");
+
+        for( int i = 0 ; i < 4*5-1 ; i++ ) {
+            table.makeNextGeneration();
+        }
+
+        int [][]result20 = {
+                { 0 , 0 , 0 , 0 , 0 },
+                { 0 , 0 , 1 , 0 , 0 },
+                { 0 , 0 , 0 , 1 , 0 },
+                { 0 , 1 , 1 , 1 , 0 },
+                { 0 , 0 , 0 , 0 , 0 },
+        };
+
+        assertArrayEquals( result20 , table.getBoard() , "iter20" );
+
+    }
+
 }
