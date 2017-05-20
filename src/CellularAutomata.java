@@ -98,8 +98,12 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 		settingsPanel.clearButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				tablePanel.clearBoard();
+				//tablePanel.clearBoard();
 				pause();
+				remove(tablePanel);
+				tablePanel = new TablePanel(sizeDialog.getTableWidth(), sizeDialog.getTableHeight(), numOfStates);
+				add(tablePanel);
+				settingsPanel.repaint();
 			}
 			
 		});
