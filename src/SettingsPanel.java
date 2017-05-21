@@ -8,7 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
-
 public class SettingsPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -18,7 +17,6 @@ public class SettingsPanel extends JPanel {
 	private int height = 30;
 	public JButton playButton;
 	public JButton clearButton;
-	public JButton randButton;
 	public JLabel speedLabel;
 	public JSlider speedSlider;
 	public JButton openButton;
@@ -29,11 +27,15 @@ public class SettingsPanel extends JPanel {
 	public JLabel separatorLabel;
 	public JLabel separatorLabel2;
 	public JLabel separatorLabel3;
+	public JLabel separatorLabel4;
+	public JLabel separatorLabel5;
 	public JLabel nghbLabel;
 	public JComboBox<String> nghbCombo;
 	public JLabel boundLabel;
 	public JComboBox<String> boundCombo;
 	public JLabel rulesLabel;
+	public JComboBox<String> rulesCombo;
+	public JButton ownRulesButton;
 
 	
 	public SettingsPanel() {
@@ -47,9 +49,6 @@ public class SettingsPanel extends JPanel {
 		clearButton = new JButton("Clear");
 		clearButton.setLocation(700+clearButton.getWidth(), 50);
 		add(clearButton);
-		
-		randButton = new JButton("Random board");
-		add(randButton);
 		
 		add(Box.createVerticalStrut(50));
 		
@@ -99,6 +98,10 @@ public class SettingsPanel extends JPanel {
 		nghbCombo.addItem("von Neumann");
 		add(nghbCombo);
 		
+		separatorLabel5 = new JLabel("                      ");
+		separatorLabel5.setForeground(Color.DARK_GRAY);
+		add(separatorLabel5);
+		
 		boundLabel = new JLabel("       Boundary:       ");
 		boundLabel.setForeground(Color.WHITE);
 		add(boundLabel);
@@ -112,9 +115,23 @@ public class SettingsPanel extends JPanel {
 		separatorLabel3.setForeground(Color.DARK_GRAY);
 		add(separatorLabel3);
 		
-		rulesLabel = new JLabel("Rules:");
+		rulesLabel = new JLabel("Rules: ");
 		rulesLabel.setForeground(Color.WHITE);
 		add(rulesLabel);
+		
+		rulesCombo = new JComboBox<String>();
+		rulesCombo.addItem("Game Of Life");
+		rulesCombo.addItem("Wireworld");
+		rulesCombo.addItem("Own rules");
+		add(rulesCombo);
+		
+		separatorLabel4 = new JLabel("                      ");
+		separatorLabel4.setForeground(Color.DARK_GRAY);
+		add(separatorLabel4);
+		
+		ownRulesButton = new JButton("New rules");
+		ownRulesButton.setEnabled(false);
+		add(ownRulesButton);
 		
 		repaint();
 	}

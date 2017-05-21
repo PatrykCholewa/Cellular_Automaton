@@ -33,7 +33,6 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 		settingsPanel = new SettingsPanel();
 		setPlayButton();
 		setClearButton();
-		setRandButton();
 		setSpeedSlider();
 		setOpenButton();
 		setSaveButton();
@@ -41,6 +40,7 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 		setSizeButton();
 		setNghbCombo();
 		setBoundCombo();
+		setRulesCombo();
 		add(settingsPanel);
 		
 		tablePanel = new TablePanel(DEF_SIZE, DEF_SIZE, numOfStates);
@@ -108,18 +108,6 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 				tablePanel = new TablePanel(sizeDialog.getTableWidth(), sizeDialog.getTableHeight(), numOfStates);
 				add(tablePanel);*/
 				tablePanel.clearBoard();
-			}
-			
-		});
-	}
-	
-	private void setRandButton() {
-		settingsPanel.randButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				pause();
-				tablePanel.clearBoard();
-				tablePanel.setRandomBoard();
 			}
 			
 		});
@@ -234,6 +222,31 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 				String opt = settingsPanel.boundCombo.getSelectedItem().toString();
 				tablePanel.clearBoard();
 				tablePanel.setBoundary(opt);
+			}
+			
+		});
+	}
+	
+	private void setRulesCombo() {
+		settingsPanel.rulesCombo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pause();
+				String opt = settingsPanel.rulesCombo.getSelectedItem().toString();
+				tablePanel.clearBoard();
+				if(opt.equals("Own rules")) {
+					settingsPanel.ownRulesButton.setEnabled(true);
+				} else {
+					settingsPanel.ownRulesButton.setEnabled(false);
+					tablePanel.setRules(opt);
+					switch(opt) {
+						case "Wireworld":
+							numOfStates = 4;
+							break;
+						default:
+							numOfStates = 2;
+					}
+				}
 			}
 			
 		});
