@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -59,7 +60,38 @@ public class TablePanel extends JPanel implements MouseListener {
 		repaint();
 	}
 	
-	/*public void setRandomBoard() {
+	public void setNeighbourhood(String opt) {
+		
+		switch(opt) {
+			case "Moore":
+				this.tab.setNeighbourhood("Moore");
+				break;
+			case "von Neumann":
+				//this.tab.setNeighbourhood("Neumann");
+				JOptionPane.showMessageDialog(null, "Not supported yet  :(");
+				break;
+			default:
+				this.tab.setNeighbourhood("Moore");
+		}
+		
+	}
+	
+	public void setBoundary(String opt) {
+		
+		switch(opt) {
+		case "Void":
+			this.tab.setNeighbourhood("Void");
+			break;
+		case "Planet":
+			JOptionPane.showMessageDialog(null, "Comming soon  :)");
+			break;
+		default:
+			this.tab.setNeighbourhood("Void");
+		}
+		
+	}
+	
+	public void setRandomBoard() {
 		Random r = new Random();
 		int newBoard[][] = new int[tab.getNumberOfRows()][tab.getNumberOfColumns()];
 		for(int x=0; x<newBoard.length; x++) {
@@ -68,7 +100,7 @@ public class TablePanel extends JPanel implements MouseListener {
 			}
 		}
 		this.tab.setBoard(newBoard);
-	}*/
+	}
 	
 	public void nextGeneration() {
 		this.tab.makeNextGeneration();
@@ -123,13 +155,16 @@ public class TablePanel extends JPanel implements MouseListener {
             }
         }
         
-        g.setColor(Color.LIGHT_GRAY);
+        if(tab.getNumberOfColumns() <= 150 && tab.getNumberOfRows() <= 150) {
+        
+        	g.setColor(Color.LIGHT_GRAY);
 
-        for(int i=0; i<=cellSize*tab.getNumberOfRows(); i+=cellSize) {
-            g.drawLine(i, 0, i, cellSize*tab.getNumberOfColumns());
-        }
-        for(int i=0; i<=cellSize*tab.getNumberOfColumns(); i+=cellSize) {
-            g.drawLine(0, i, cellSize*tab.getNumberOfRows(), i);
+        	for(int i=0; i<=cellSize*tab.getNumberOfRows(); i+=cellSize) {
+        		g.drawLine(i, 0, i, cellSize*tab.getNumberOfColumns());
+        	}
+        	for(int i=0; i<=cellSize*tab.getNumberOfColumns(); i+=cellSize) {
+            	g.drawLine(0, i, cellSize*tab.getNumberOfRows(), i);
+        	}
         }
 	}
 	
@@ -141,6 +176,14 @@ public class TablePanel extends JPanel implements MouseListener {
 			tab.setCellValue(x, y, state+1);
 		}
 		
+	}
+	
+	public int getNumOfRows() {
+		return tab.getNumberOfRows();
+	}
+	
+	public int getNumOfCols() {
+		return tab.getNumberOfColumns();
 	}
 
 	@Override

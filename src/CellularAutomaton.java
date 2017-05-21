@@ -26,18 +26,21 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 	private final int DEF_SIZE = 30;
 
 	public CellularAutomaton() {
-		setTitle("CellularAutomata");
+		setTitle("CellularAutomaton");
 		setSize(800, 601);
 		setBackground(Color.DARK_GRAY);
 		
 		settingsPanel = new SettingsPanel();
 		setPlayButton();
 		setClearButton();
+		setRandButton();
 		setSpeedSlider();
 		setOpenButton();
 		setSaveButton();
 		setPngButton();
 		setSizeButton();
+		setNghbCombo();
+		setBoundCombo();
 		add(settingsPanel);
 		
 		tablePanel = new TablePanel(DEF_SIZE, DEF_SIZE, numOfStates);
@@ -62,6 +65,7 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				tablePanel.nextGeneration();
+				//tablePanel.setRandomBoard();
 			}
 		});
 		
@@ -100,10 +104,22 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				//tablePanel.clearBoard();
 				pause();
-				remove(tablePanel);
+				/*remove(tablePanel);
 				tablePanel = new TablePanel(sizeDialog.getTableWidth(), sizeDialog.getTableHeight(), numOfStates);
-				add(tablePanel);
-				settingsPanel.repaint();
+				add(tablePanel);*/
+				tablePanel.clearBoard();
+			}
+			
+		});
+	}
+	
+	private void setRandButton() {
+		settingsPanel.randButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pause();
+				tablePanel.clearBoard();
+				tablePanel.setRandomBoard();
 			}
 			
 		});
@@ -182,12 +198,42 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 				pause();
 				sizeDialog.setVisible(true);
 				if(sizeDialog.isOK()) {
-					remove(tablePanel);
-					tablePanel = new TablePanel(sizeDialog.getTableWidth(), sizeDialog.getTableHeight(), numOfStates);
-					add(tablePanel);
-					settingsPanel.setTableSize(sizeDialog.getTableWidth(), sizeDialog.getTableHeight());
+					if(sizeDialog.getTableHeight() == tablePanel.getNumOfRows() && sizeDialog.getTableWidth() == tablePanel.getNumOfCols()) {
+						tablePanel.clearBoard();
+					} else {
+						remove(tablePanel);
+						tablePanel = new TablePanel(sizeDialog.getTableWidth(), sizeDialog.getTableHeight(), numOfStates);
+						add(tablePanel);
+						settingsPanel.setTableSize(sizeDialog.getTableWidth(), sizeDialog.getTableHeight());
+					}
 				}
 				sizeDialog.setOk(false);
+			}
+			
+		});
+	}
+	
+	private void setNghbCombo() {
+		settingsPanel.nghbCombo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pause();
+				String opt = settingsPanel.nghbCombo.getSelectedItem().toString();
+				tablePanel.clearBoard();
+				tablePanel.setNeighbourhood(opt);
+			}
+			
+		});
+	}
+	
+	private void setBoundCombo() {
+		settingsPanel.boundCombo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pause();
+				String opt = settingsPanel.boundCombo.getSelectedItem().toString();
+				tablePanel.clearBoard();
+				tablePanel.setBoundary(opt);
 			}
 			
 		});
