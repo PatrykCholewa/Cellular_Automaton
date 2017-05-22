@@ -34,9 +34,9 @@ public class TablePanel extends JPanel implements MouseListener {
 		this.tab = new Table(numberOfRows, numberOfCols);
 		
 		if(numberOfRows > numberOfCols) {
-			this.cellSize = this.getHeight()/numberOfRows;
+			this.cellSize = HEIGHT/numberOfRows;
 		} else {
-			this.cellSize = this.getWidth()/numberOfCols;
+			this.cellSize = WIDTH/numberOfCols;
 		}
 		
 		int newBoard[][] = new int[numberOfRows][numberOfCols];
@@ -46,7 +46,6 @@ public class TablePanel extends JPanel implements MouseListener {
 			}
 		}
 		this.tab.setBoard(newBoard);
-		
 		this.tab.setBoundary("Void");
 		this.tab.setNeighbourhood("Moore");
 		String rules[] = new String[4];

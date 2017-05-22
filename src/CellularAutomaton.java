@@ -27,7 +27,7 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 
 	public CellularAutomaton() {
 		setTitle("CellularAutomaton");
-		setSize(800, 601);
+		setSize(800, 611);
 		setBackground(Color.DARK_GRAY);
 		
 		settingsPanel = new SettingsPanel();

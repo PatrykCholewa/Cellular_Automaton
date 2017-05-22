@@ -64,7 +64,7 @@ public class SettingsPanel extends JPanel {
 		saveButton = new JButton("Save");
 		saveButton.setToolTipText("Save board to file.");
 		add(saveButton);
-		pngButton = new JButton("Save PNG");
+		pngButton = new JButton("Save as PNG");
 		pngButton.setToolTipText("Save board as png file");
 		add(pngButton);
 		
@@ -75,7 +75,7 @@ public class SettingsPanel extends JPanel {
 		sizeButton = new JButton("Change Size");
 		add(sizeButton);
 		
-		nghbLabel = new JLabel("Neighbourhood:");
+		nghbLabel = new JLabel("Set neighbourhood:");
 		nghbLabel.setForeground(Color.WHITE);
 		add(nghbLabel);
 		
@@ -84,16 +84,17 @@ public class SettingsPanel extends JPanel {
 		nghbCombo.addItem("von Neumann");
 		add(nghbCombo);
 		
-		boundLabel = new JLabel("Boundary:");
+		boundLabel = new JLabel("Set boundary:");
 		boundLabel.setForeground(Color.WHITE);
 		add(boundLabel);
 		
 		boundCombo = new JComboBox<String>();
+		boundCombo.setMinimumSize(new Dimension(100, 20));
 		boundCombo.addItem("Void");
 		boundCombo.addItem("Planet");
 		add(boundCombo);
 		
-		rulesLabel = new JLabel("Rules: ");
+		rulesLabel = new JLabel("Select rules: ");
 		rulesLabel.setForeground(Color.WHITE);
 		add(rulesLabel);
 		
