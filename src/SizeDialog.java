@@ -21,7 +21,7 @@ public class SizeDialog extends JDialog implements ActionListener {
 		setSize(300, 200);
 		setLayout(null);
 		
-		infoLabel = new JLabel("Enter new size (max 300x300):", JLabel.CENTER);
+		infoLabel = new JLabel("Enter new size (max 600x600):", JLabel.CENTER);
 		infoLabel.setBounds(45, 15, 220, 30);
 		add(infoLabel);
 		
@@ -62,8 +62,8 @@ public class SizeDialog extends JDialog implements ActionListener {
 			w = 30;
 		}
 		
-		if(w > 300) {
-			w = 300;
+		if(w > 600) {
+			w = 600;
 		}
 		
 		if(w <= 0) {
@@ -81,8 +81,8 @@ public class SizeDialog extends JDialog implements ActionListener {
 			h = 30;
 		}
 		
-		if(h > 300) {
-			h = 300;
+		if(h > 600) {
+			h = 600;
 		}
 		
 		if(h <= 0) {
