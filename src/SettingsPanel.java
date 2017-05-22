@@ -11,7 +11,7 @@ import javax.swing.JSlider;
 public class SettingsPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private static final int WIDTH = 200;
+	private static final int WIDTH = 210;
 	private static final int HEIGHT = 600;
 	private int width = 30;
 	private int height = 30;
@@ -68,6 +68,8 @@ public class SettingsPanel extends JPanel {
 		pngButton.setToolTipText("Save board as png file");
 		add(pngButton);
 		
+		add(Box.createVerticalStrut(50));
+		
 		sizeLabel = new JLabel("Board size: "+this.width+"x"+this.height+" ");
 		sizeLabel.setForeground(Color.WHITE);
 		add(sizeLabel);
@@ -75,7 +77,9 @@ public class SettingsPanel extends JPanel {
 		sizeButton = new JButton("Change Size");
 		add(sizeButton);
 		
-		nghbLabel = new JLabel("Set neighbourhood:");
+		add(Box.createVerticalStrut(50));
+		
+		nghbLabel = new JLabel("Neighbourhood:");
 		nghbLabel.setForeground(Color.WHITE);
 		add(nghbLabel);
 		
@@ -84,7 +88,9 @@ public class SettingsPanel extends JPanel {
 		nghbCombo.addItem("von Neumann");
 		add(nghbCombo);
 		
-		boundLabel = new JLabel("Set boundary:");
+		add(Box.createVerticalStrut(50));
+		
+		boundLabel = new JLabel("Boundary:");
 		boundLabel.setForeground(Color.WHITE);
 		add(boundLabel);
 		
@@ -94,7 +100,9 @@ public class SettingsPanel extends JPanel {
 		boundCombo.addItem("Planet");
 		add(boundCombo);
 		
-		rulesLabel = new JLabel("Select rules: ");
+		add(Box.createVerticalStrut(50));
+		
+		rulesLabel = new JLabel("Rules: ");
 		rulesLabel.setForeground(Color.WHITE);
 		add(rulesLabel);
 		
