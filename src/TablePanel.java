@@ -67,8 +67,7 @@ public class TablePanel extends JPanel implements MouseListener {
 				this.tab.setNeighbourhood("Moore");
 				break;
 			case "von Neumann":
-				//this.tab.setNeighbourhood("Neumann");
-				JOptionPane.showMessageDialog(null, "Not supported yet  :(");
+				this.tab.setNeighbourhood("Neumann");
 				break;
 			default:
 				this.tab.setNeighbourhood("Moore");
@@ -80,13 +79,13 @@ public class TablePanel extends JPanel implements MouseListener {
 		
 		switch(opt) {
 		case "Void":
-			this.tab.setNeighbourhood("Void");
+			this.tab.setBoundary("Void");
 			break;
 		case "Planet":
-			JOptionPane.showMessageDialog(null, "Comming soon  :)");
+			this.tab.setBoundary("Planet");
 			break;
 		default:
-			this.tab.setNeighbourhood("Void");
+			this.tab.setBoundary("Void");
 		}
 		
 	}
