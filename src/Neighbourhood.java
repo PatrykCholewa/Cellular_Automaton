@@ -11,6 +11,11 @@ public class Neighbourhood {
             if( name.contains("Moore")) {
                 Class cls = Class.forName( "neighbourhood.Moore" );
                 neighbourhoodObject = ( neighbourhood.NeighbourhoodTemplate ) cls.newInstance();
+            } else if( name.contains("Neumann")) {
+                Class cls = Class.forName( "neighbourhood.Neumann" );
+                neighbourhoodObject = ( neighbourhood.NeighbourhoodTemplate ) cls.newInstance();
+            } else {
+                throw new IllegalArgumentException( "Not supported neighbourhood!" );
             }
         } catch( ClassNotFoundException e ){
             throw new AssertionError( "There's no Moore class in package!");
