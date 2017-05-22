@@ -24,11 +24,6 @@ public class SettingsPanel extends JPanel {
 	public JButton pngButton;
 	public JLabel sizeLabel;
 	public JButton sizeButton;
-	public JLabel separatorLabel;
-	public JLabel separatorLabel2;
-	public JLabel separatorLabel3;
-	public JLabel separatorLabel4;
-	public JLabel separatorLabel5;
 	public JLabel nghbLabel;
 	public JComboBox<String> nghbCombo;
 	public JLabel boundLabel;
@@ -54,10 +49,9 @@ public class SettingsPanel extends JPanel {
 		
 		speedLabel = new JLabel("Delay: 500ms");
 		speedLabel.setForeground(Color.WHITE);
-		speedLabel.setLocation(600+(200-speedLabel.getWidth())/2, clearButton.getY()+clearButton.getHeight()+100);
 		add(speedLabel);
 		
-		speedSlider = new JSlider(JSlider.HORIZONTAL,5, 1000, 500);
+		speedSlider = new JSlider(JSlider.HORIZONTAL,5, 800, 500);
 		speedSlider.setBackground(Color.DARK_GRAY);
 		speedSlider.setMaximumSize(new Dimension(180, 30));
 		add(speedSlider);
@@ -74,20 +68,12 @@ public class SettingsPanel extends JPanel {
 		pngButton.setToolTipText("Save board as png file");
 		add(pngButton);
 		
-		separatorLabel2 = new JLabel("                             ");
-		separatorLabel2.setForeground(Color.DARK_GRAY);
-		add(separatorLabel2);
-		
 		sizeLabel = new JLabel("Board size: "+this.width+"x"+this.height+" ");
 		sizeLabel.setForeground(Color.WHITE);
 		add(sizeLabel);
 		
 		sizeButton = new JButton("Change Size");
 		add(sizeButton);
-		
-		separatorLabel = new JLabel("                      ");
-		separatorLabel.setForeground(Color.DARK_GRAY);
-		add(separatorLabel);
 		
 		nghbLabel = new JLabel("Neighbourhood:");
 		nghbLabel.setForeground(Color.WHITE);
@@ -98,11 +84,7 @@ public class SettingsPanel extends JPanel {
 		nghbCombo.addItem("von Neumann");
 		add(nghbCombo);
 		
-		separatorLabel5 = new JLabel("                      ");
-		separatorLabel5.setForeground(Color.DARK_GRAY);
-		add(separatorLabel5);
-		
-		boundLabel = new JLabel("       Boundary:       ");
+		boundLabel = new JLabel("Boundary:");
 		boundLabel.setForeground(Color.WHITE);
 		add(boundLabel);
 		
@@ -111,23 +93,15 @@ public class SettingsPanel extends JPanel {
 		boundCombo.addItem("Planet");
 		add(boundCombo);
 		
-		separatorLabel3 = new JLabel("                                       ");
-		separatorLabel3.setForeground(Color.DARK_GRAY);
-		add(separatorLabel3);
-		
 		rulesLabel = new JLabel("Rules: ");
 		rulesLabel.setForeground(Color.WHITE);
 		add(rulesLabel);
 		
 		rulesCombo = new JComboBox<String>();
-		rulesCombo.addItem("Game Of Life");
 		rulesCombo.addItem("Wireworld");
+		rulesCombo.addItem("Game Of Life");
 		rulesCombo.addItem("Own rules");
 		add(rulesCombo);
-		
-		separatorLabel4 = new JLabel("                      ");
-		separatorLabel4.setForeground(Color.DARK_GRAY);
-		add(separatorLabel4);
 		
 		ownRulesButton = new JButton("New rules");
 		ownRulesButton.setEnabled(false);

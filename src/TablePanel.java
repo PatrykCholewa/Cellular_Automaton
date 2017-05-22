@@ -34,9 +34,9 @@ public class TablePanel extends JPanel implements MouseListener {
 		this.tab = new Table(numberOfRows, numberOfCols);
 		
 		if(numberOfRows > numberOfCols) {
-			this.cellSize = HEIGHT/numberOfRows;
+			this.cellSize = this.getHeight()/numberOfRows;
 		} else {
-			this.cellSize = WIDTH/numberOfCols;
+			this.cellSize = this.getWidth()/numberOfCols;
 		}
 		
 		int newBoard[][] = new int[numberOfRows][numberOfCols];
@@ -49,9 +49,12 @@ public class TablePanel extends JPanel implements MouseListener {
 		
 		this.tab.setBoundary("Void");
 		this.tab.setNeighbourhood("Moore");
-		String rules[] = new String[2];
-		rules[0] = "1/3/1/0";
-		rules[1] = "1/23/1/0";
+		String rules[] = new String[4];
+		rules[0] = "0/9/1/0";
+		rules[1] = "1/9/1/2";
+		rules[2] = "2/9/1/3";
+		rules[3] = "1/12/1/3";
+		numOfStates = 4;
 		this.tab.setRules(rules);
 		
 		paintImage = new BufferedImage(cellSize*numberOfRows, cellSize*numberOfCols, BufferedImage.TYPE_INT_RGB);
@@ -112,10 +115,12 @@ public class TablePanel extends JPanel implements MouseListener {
 				this.tab.setRules(rules);
 				break;
 			default:
-				rules = new String[2];
-				rules[0] = "1/3/1/0";
-				rules[1] = "1/23/1/0";
-				numOfStates = 2;
+				rules = new String[4];
+				rules[0] = "0/9/1/0";
+				rules[1] = "1/9/1/2";
+				rules[2] = "2/9/1/3";
+				rules[3] = "1/12/1/3";
+				numOfStates = 4;
 				this.tab.setRules(rules);
 		}
 		
@@ -168,7 +173,7 @@ public class TablePanel extends JPanel implements MouseListener {
 			return Color.WHITE;
 		}
 		float dc = (float)this.numOfStates/state;
-		return Color.getHSBColor(dc, 0.8f, 1.0f);
+		return Color.getHSBColor(dc, 1.0f, 1.0f);
 	}
 	
 	@Override
@@ -208,6 +213,16 @@ public class TablePanel extends JPanel implements MouseListener {
 		
 	}
 	
+	private void decreaseCellState(int x, int y) {
+		int state = tab.getCellValue(x, y);
+		if(state == 0) {
+			tab.setCellValue(x, y, this.numOfStates-1);
+		} else {
+			tab.setCellValue(x, y, state-1);
+		}
+		
+	}
+	
 	public int getNumOfRows() {
 		return tab.getNumberOfRows();
 	}
@@ -218,10 +233,15 @@ public class TablePanel extends JPanel implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(e.getY() <= cellSize*tab.getNumberOfColumns() && e.getX() <= cellSize*tab.getNumberOfRows()) {
+		if(e.getY() <= cellSize*tab.getNumberOfColumns() && e.getX() <= cellSize*tab.getNumberOfRows() && e.getButton() == MouseEvent.BUTTON1) {
 			int x = (int)Math.floor(e.getX()/this.cellSize);
 			int y = (int)Math.floor(e.getY()/this.cellSize);
 			increaseCellState(x, y);
+		}
+		if(e.getY() <= cellSize*tab.getNumberOfColumns() && e.getX() <= cellSize*tab.getNumberOfRows() && e.getButton() == MouseEvent.BUTTON3) {
+			int x = (int)Math.floor(e.getX()/this.cellSize);
+			int y = (int)Math.floor(e.getY()/this.cellSize);
+			decreaseCellState(x, y);
 		}
 	}
 

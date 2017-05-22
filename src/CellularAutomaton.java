@@ -22,7 +22,7 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 	private JFileChooser fc = new JFileChooser();
 	private SizeDialog sizeDialog = new SizeDialog(this);
 	
-	private int numOfStates = 2;
+	private int numOfStates = 4;
 	private final int DEF_SIZE = 30;
 
 	public CellularAutomaton() {
@@ -193,6 +193,25 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 						tablePanel = new TablePanel(sizeDialog.getTableWidth(), sizeDialog.getTableHeight(), numOfStates);
 						add(tablePanel);
 						settingsPanel.setTableSize(sizeDialog.getTableWidth(), sizeDialog.getTableHeight());
+						String opt = settingsPanel.nghbCombo.getSelectedItem().toString();
+						tablePanel.setNeighbourhood(opt);
+						opt = settingsPanel.boundCombo.getSelectedItem().toString();
+						tablePanel.setBoundary(opt);
+						opt = settingsPanel.rulesCombo.getSelectedItem().toString();
+						tablePanel.clearBoard();
+						if(opt.equals("Own rules")) {
+							settingsPanel.ownRulesButton.setEnabled(true);
+						} else {
+							settingsPanel.ownRulesButton.setEnabled(false);
+							tablePanel.setRules(opt);
+							switch(opt) {
+								case "Game Of Life":
+									numOfStates = 2;
+									break;
+								default:
+									numOfStates = 4;
+							}
+						}
 					}
 				}
 				sizeDialog.setOk(false);
@@ -207,7 +226,6 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				pause();
 				String opt = settingsPanel.nghbCombo.getSelectedItem().toString();
-				tablePanel.clearBoard();
 				tablePanel.setNeighbourhood(opt);
 			}
 			
@@ -220,7 +238,6 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				pause();
 				String opt = settingsPanel.boundCombo.getSelectedItem().toString();
-				tablePanel.clearBoard();
 				tablePanel.setBoundary(opt);
 			}
 			
@@ -240,11 +257,11 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 					settingsPanel.ownRulesButton.setEnabled(false);
 					tablePanel.setRules(opt);
 					switch(opt) {
-						case "Wireworld":
-							numOfStates = 4;
+						case "Game Of Life":
+							numOfStates = 2;
 							break;
 						default:
-							numOfStates = 2;
+							numOfStates = 4;
 					}
 				}
 			}
