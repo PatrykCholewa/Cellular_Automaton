@@ -19,6 +19,7 @@ public class SizeDialog extends JDialog implements ActionListener {
 	public SizeDialog(JFrame owner) {
 		super(owner, "Change size", true);
 		setSize(300, 250);
+		setResizable(false);
 		setLayout(null);
 		
 		infoLabel = new JLabel("Enter new size (max 600x600):", JLabel.CENTER);
