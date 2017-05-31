@@ -153,6 +153,43 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 				int returnVal = fc.showOpenDialog(CellularAutomaton.this);
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					File file = fc.getSelectedFile();
+					TableReader tabReader = new TableReader(file.getPath(), numOfStates);
+					
+					try {
+						tabReader.readFromFile();
+						if(tabReader.getWidth() != tablePanel.getNumOfRows() && tabReader.getHeight() != tablePanel.getNumOfCols()) {
+						remove(tablePanel);
+						tablePanel = new TablePanel(tabReader.getWidth(),
+								tabReader.getHeight(), numOfStates);
+						add(tablePanel);
+						}
+						tablePanel.setBoard(tabReader.getBoard());
+						settingsPanel.setTableSize(tabReader.getWidth(),
+								tabReader.getHeight());
+						String opt = settingsPanel.nghbCombo.getSelectedItem()
+								.toString();
+						tablePanel.setNeighbourhood(opt);
+						opt = settingsPanel.boundCombo.getSelectedItem()
+								.toString();
+						tablePanel.setBoundary(opt);
+						opt = settingsPanel.rulesCombo.getSelectedItem()
+								.toString();
+						if (opt.equals("Own rules")) {
+							settingsPanel.ownRulesButton.setEnabled(true);
+						} else {
+							settingsPanel.ownRulesButton.setEnabled(false);
+							tablePanel.setRules(opt);
+							switch (opt) {
+							case "Game Of Life":
+								numOfStates = 2;
+								break;
+							default:
+								numOfStates = 4;
+							}
+						}
+					} catch (Exception exc) {
+						JOptionPane.showMessageDialog(null, "Can't read file!");
+					}
 
 				}
 			}
@@ -168,7 +205,12 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 				int returnVal = fc.showSaveDialog(CellularAutomaton.this);
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					File file = fc.getSelectedFile();
-
+					TableSaver tabSaver = new TableSaver(file.getPath(), tablePanel.getNumOfRows(), tablePanel.getNumOfCols(), tablePanel.getBoard());
+					try {
+						tabSaver.saveToFile();
+					} catch(Exception exc) {
+						JOptionPane.showMessageDialog(null, "Can't write file!");
+					}
 				}
 			}
 

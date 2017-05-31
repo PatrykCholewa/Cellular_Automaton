@@ -62,6 +62,14 @@ public class TablePanel extends JPanel implements MouseListener {
 		repaint();
 	}
 	
+	public void setBoard(int [][]board) {
+		tab.setBoard(board);
+	}
+	
+	public int [][]getBoard() {
+		return tab.getBoard();
+	}
+	
 	public void setNeighbourhood(String opt) {
 		
 		switch(opt) {
