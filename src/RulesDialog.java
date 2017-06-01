@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -18,6 +19,7 @@ public class RulesDialog extends JDialog implements ActionListener {
 	private JButton cancelButton;
 	private JButton okButton;
 	private JButton nextButton;
+	private JButton clearButton;
 	private JTextArea previewArea;
 	private JLabel stateLabel;
 	private JTextField AField;
@@ -28,7 +30,7 @@ public class RulesDialog extends JDialog implements ActionListener {
 	private JLabel label3;
 	private JTextField DField;
 	private int numOfStates = 0;
-	private String rules[];
+	private ArrayList<String> rulesList;
 	private boolean ok = false;
 	
 	public RulesDialog(JFrame owner) {
@@ -36,6 +38,8 @@ public class RulesDialog extends JDialog implements ActionListener {
 		setSize(400, 375);
 		setResizable(false);
 		setLayout(null);
+		
+		rulesList = new ArrayList<String>();
 		
 		previewArea = new JTextArea();
 		previewArea.setEditable(false);
@@ -75,10 +79,15 @@ public class RulesDialog extends JDialog implements ActionListener {
 		DField.setBounds(315, 180, 50, 20);
 		add(DField);
 		
-		nextButton = new JButton(">>");
-		nextButton.setBounds(170, 230, 60, 30);
+		nextButton = new JButton("Confirm");
+		nextButton.setBounds(205, 230, 100, 30);
 		nextButton.addActionListener(this);
 		add(nextButton);
+		
+		clearButton = new JButton("Clear");
+		clearButton.setBounds(115, 230, 80, 30);
+		clearButton.addActionListener(this);
+		add(clearButton);
 		
 		cancelButton = new JButton("Cancel");
 		cancelButton.setBounds(10, 290, 185, 35);
@@ -88,9 +97,10 @@ public class RulesDialog extends JDialog implements ActionListener {
 		okButton = new JButton("OK");
 		okButton.setBounds(205, 290, 185, 35);
 		okButton.addActionListener(this);
+		okButton.setEnabled(false);
 		add(okButton);
 		
-		previewArea.append("W trakcie budowy...\n");
+		previewArea.append("Rules:\n");
 	}
 	
 	@Override
@@ -121,7 +131,7 @@ public class RulesDialog extends JDialog implements ActionListener {
 				d = 0;
 			}
 			StringBuilder sb = new StringBuilder();
-			sb.append(numOfStates+":  ");
+			previewArea.append(numOfStates+":  ");
 			sb.append(a);
 			sb.append("/");
 			sb.append(b);
@@ -129,17 +139,29 @@ public class RulesDialog extends JDialog implements ActionListener {
 			sb.append(c);
 			sb.append("/");
 			sb.append(d);
-			sb.append("\n");
 			
-			previewArea.append(sb.toString());
+			rulesList.add(sb.toString());
 			
+			previewArea.append(sb.toString()+"\n");
+			numOfStates++;
 			AField.setText("");
 			BField.setText("");
 			CField.setText("");
 			DField.setText("");
-			numOfStates++;
 			stateLabel.setText(numOfStates+" :");
-			
+			okButton.setEnabled(true);
+		}
+		
+		if(o == clearButton) {
+			previewArea.setText("Rules:\n");
+			rulesList.clear();
+			numOfStates = 0;
+			AField.setText("");
+			BField.setText("");
+			CField.setText("");
+			DField.setText("");
+			stateLabel.setText(numOfStates+" :");
+			okButton.setEnabled(false);
 		}
 		
 		if(o == cancelButton) {
@@ -148,7 +170,6 @@ public class RulesDialog extends JDialog implements ActionListener {
 		}
 		
 		if(o == okButton) {
-			JOptionPane.showMessageDialog(null, "Rules Editor jeszcze nie dziala :/\n");
 			this.ok = true;
 			this.setVisible(false);
 		}
@@ -163,6 +184,10 @@ public class RulesDialog extends JDialog implements ActionListener {
 	}
 	
 	public String[] getRules() {
+		String rules[] = new String[rulesList.size()];
+		for(int i=0; i<rules.length; i++) {
+			rules[i] = rulesList.get(i);
+		}
 		return rules;
 	}
 	

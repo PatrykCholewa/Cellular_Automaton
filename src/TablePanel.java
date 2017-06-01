@@ -100,7 +100,7 @@ public class TablePanel extends JPanel implements MouseListener {
 		
 	}
 	
-	public void setOwnRules(String rules[], int numOfStates) {
+	public void setRules(String rules[], int numOfStates) {
 		this.tab.setRules(rules);
 		this.numOfStates = numOfStates;
 	}

@@ -340,32 +340,9 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				pause();
 				rulesDialog.setVisible(true);
-				/*
-				 * if(rulesDialog.isOK()) { if(sizeDialog.getTableHeight() ==
-				 * tablePanel.getNumOfRows() && sizeDialog.getTableWidth() ==
-				 * tablePanel.getNumOfCols()) { tablePanel.clearBoard(); } else
-				 * { remove(tablePanel); tablePanel = new
-				 * TablePanel(sizeDialog.getTableWidth(),
-				 * sizeDialog.getTableHeight(), numOfStates); add(tablePanel);
-				 * settingsPanel.setTableSize(sizeDialog.getTableWidth(),
-				 * sizeDialog.getTableHeight()); String opt =
-				 * settingsPanel.nghbCombo.getSelectedItem().toString();
-				 * tablePanel.setNeighbourhood(opt); opt =
-				 * settingsPanel.boundCombo.getSelectedItem().toString();
-				 * tablePanel.setBoundary(opt); opt =
-				 * settingsPanel.rulesCombo.getSelectedItem().toString();
-				 * tablePanel.clearBoard(); if(opt.equals("Own rules")) {
-				 * settingsPanel.ownRulesButton.setEnabled(true); } else {
-				 * settingsPanel.ownRulesButton.setEnabled(false);
-				 * tablePanel.setRules(opt); switch(opt) { case "Game Of Life":
-				 * numOfStates = 2; break; default: numOfStates = 4; } } } }
-				 * sizeDialog.setOk(false);
-				 */
-
 				if (rulesDialog.isOK()) {
 					try {
-						tablePanel.setOwnRules(rulesDialog.getRules(),
-								rulesDialog.getNumberOfStates());
+						tablePanel.setRules(rulesDialog.getRules(), rulesDialog.getNumberOfStates());
 					} catch (Exception exc) {
 						JOptionPane.showMessageDialog(null, "Your rules cannot be runned :(\nPlease refer to the specification");
 						settingsPanel.rulesCombo.setSelectedIndex(0);
