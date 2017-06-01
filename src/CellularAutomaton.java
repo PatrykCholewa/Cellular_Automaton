@@ -12,7 +12,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.JOptionPane;
 
-public class CellularAutomaton extends JFrame implements ActionListener {
+public class CellularAutomaton extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private Timer tm;
@@ -72,7 +72,6 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 					JOptionPane.showMessageDialog(null,
 							"Wielkie nieba! Nie działa...");
 				}
-				// tablePanel.setRandomBoard();
 			}
 		});
 
@@ -109,13 +108,7 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 		settingsPanel.clearButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// tablePanel.clearBoard();
 				pause();
-				/*
-				 * remove(tablePanel); tablePanel = new
-				 * TablePanel(sizeDialog.getTableWidth(),
-				 * sizeDialog.getTableHeight(), numOfStates); add(tablePanel);
-				 */
 				tablePanel.clearBoard();
 			}
 
@@ -352,12 +345,6 @@ public class CellularAutomaton extends JFrame implements ActionListener {
 			}
 
 		});
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// tablePanel.setRandomBoard();
-		// tablePanel.nextGeneration();
 	}
 
 	public static void main(String args[]) {

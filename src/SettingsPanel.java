@@ -38,13 +38,15 @@ public class SettingsPanel extends JPanel {
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		this.setBounds(600, 0, WIDTH, HEIGHT);
 		
-		Font font = new Font("Sans Serif", Font.PLAIN, 17);
+		Font font = new Font("", Font.PLAIN, 18);
 		
 		playButton = new JButton("Play");
 		playButton.setLocation(600+((100-playButton.getWidth())), 50);
+		playButton.setToolTipText("Start/stop the automaton.");
 		add(playButton);
 		
 		clearButton = new JButton("Clear");
+		clearButton.setToolTipText("Clear board and stop the automaton.");
 		clearButton.setLocation(700+clearButton.getWidth(), 50);
 		add(clearButton);
 		
@@ -69,7 +71,7 @@ public class SettingsPanel extends JPanel {
 		saveButton.setToolTipText("Save board to file.");
 		add(saveButton);
 		pngButton = new JButton("Save as PNG");
-		pngButton.setToolTipText("Save board as png file");
+		pngButton.setToolTipText("Save board as png file. Remember to add .png to your file name.");
 		add(pngButton);
 		
 		add(Box.createVerticalStrut(50));
@@ -80,6 +82,7 @@ public class SettingsPanel extends JPanel {
 		add(sizeLabel);
 		
 		sizeButton = new JButton("Change Size");
+		sizeButton.setToolTipText("Change board size. Board'll be cleared.");
 		add(sizeButton);
 		
 		add(Box.createVerticalStrut(50));
@@ -122,6 +125,7 @@ public class SettingsPanel extends JPanel {
 		
 		ownRulesButton = new JButton("New rules");
 		ownRulesButton.setEnabled(false);
+		ownRulesButton.setToolTipText("Set your own rules in Rules Editor.");
 		add(ownRulesButton);
 		
 		repaint();
@@ -139,10 +143,7 @@ public class SettingsPanel extends JPanel {
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-		/*g.setColor(Color.BLACK);
-		g.fillRect(600, 0, WIDTH, HEIGHT);
-		g.setColor(Color.WHITE);
-		g.fillRect(605, 5, WIDTH-10, HEIGHT-10);*/
+		;
 	}
 	
 }

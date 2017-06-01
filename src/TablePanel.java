@@ -181,8 +181,17 @@ public class TablePanel extends JPanel implements MouseListener {
 		if(state == 0) {
 			return Color.DARK_GRAY;
 		}
-		if(state == 1) {
+		if(state == 1 && numOfStates == 2) {
 			return Color.WHITE;
+		}
+		if(state == 1) {
+			return Color.BLUE;
+		}
+		if(state == 2) {
+			return Color.RED;
+		}
+		if(state == 3) {
+			return Color.YELLOW;
 		}
 		float dc = (float)this.numOfStates/state;
 		return Color.getHSBColor(dc, 1.0f, 1.0f);
