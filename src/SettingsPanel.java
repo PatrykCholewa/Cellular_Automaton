@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -37,6 +38,8 @@ public class SettingsPanel extends JPanel {
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		this.setBounds(600, 0, WIDTH, HEIGHT);
 		
+		Font font = new Font("Sans Serif", Font.PLAIN, 17);
+		
 		playButton = new JButton("Play");
 		playButton.setLocation(600+((100-playButton.getWidth())), 50);
 		add(playButton);
@@ -48,6 +51,7 @@ public class SettingsPanel extends JPanel {
 		add(Box.createVerticalStrut(50));
 		
 		speedLabel = new JLabel("Delay: 500ms");
+		speedLabel.setFont(font);
 		speedLabel.setForeground(Color.WHITE);
 		add(speedLabel);
 		
@@ -71,6 +75,7 @@ public class SettingsPanel extends JPanel {
 		add(Box.createVerticalStrut(50));
 		
 		sizeLabel = new JLabel("Board size: "+this.width+"x"+this.height+" ");
+		sizeLabel.setFont(font);
 		sizeLabel.setForeground(Color.WHITE);
 		add(sizeLabel);
 		
@@ -80,6 +85,7 @@ public class SettingsPanel extends JPanel {
 		add(Box.createVerticalStrut(50));
 		
 		nghbLabel = new JLabel("Neighbourhood:");
+		nghbLabel.setFont(font);
 		nghbLabel.setForeground(Color.WHITE);
 		add(nghbLabel);
 		
@@ -91,6 +97,7 @@ public class SettingsPanel extends JPanel {
 		add(Box.createVerticalStrut(50));
 		
 		boundLabel = new JLabel("Boundary:");
+		boundLabel.setFont(font);
 		boundLabel.setForeground(Color.WHITE);
 		add(boundLabel);
 		
@@ -103,6 +110,7 @@ public class SettingsPanel extends JPanel {
 		add(Box.createVerticalStrut(50));
 		
 		rulesLabel = new JLabel("Rules: ");
+		rulesLabel.setFont(font);
 		rulesLabel.setForeground(Color.WHITE);
 		add(rulesLabel);
 		
