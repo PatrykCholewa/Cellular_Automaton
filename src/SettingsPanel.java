@@ -37,95 +37,108 @@ public class SettingsPanel extends JPanel {
 	public SettingsPanel() {
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		this.setBounds(600, 0, WIDTH, HEIGHT);
+		this.setLayout(null);
 		
-		Font font = new Font("", Font.PLAIN, 18);
+		Font font = new Font("Courier New", Font.BOLD, 16);
 		
 		playButton = new JButton("Play");
-		playButton.setLocation(600+((100-playButton.getWidth())), 50);
 		playButton.setToolTipText("Start/stop the automaton.");
+		playButton.setBounds(10, 15, (this.getWidth()/2)-5, 35);
 		add(playButton);
 		
 		clearButton = new JButton("Clear");
 		clearButton.setToolTipText("Clear board and stop the automaton.");
-		clearButton.setLocation(700+clearButton.getWidth(), 50);
+		clearButton.setBounds((this.getWidth()/2)+5, 15, (this.getWidth()/2)-10, 35);
 		add(clearButton);
 		
 		add(Box.createVerticalStrut(50));
 		
-		speedLabel = new JLabel("Delay: 500ms");
+		speedLabel = new JLabel("Delay: 500ms", JLabel.CENTER);
 		speedLabel.setFont(font);
 		speedLabel.setForeground(Color.WHITE);
+		speedLabel.setBounds(10, 70, this.getWidth()-20, 25);
 		add(speedLabel);
 		
 		speedSlider = new JSlider(JSlider.HORIZONTAL,5, 800, 500);
 		speedSlider.setBackground(Color.DARK_GRAY);
-		speedSlider.setMaximumSize(new Dimension(180, 30));
+		speedSlider.setBounds(10, 105, this.getWidth()-20, 15);
 		add(speedSlider);
 		
 		add(Box.createVerticalStrut(50));
 		
 		openButton = new JButton("Open");
 		openButton.setToolTipText("Open board from file.");
+		openButton.setBounds(10, 150, (this.getWidth()/2)-5, 25);
 		add(openButton);
 		saveButton = new JButton("Save");
 		saveButton.setToolTipText("Save board to file.");
+		saveButton.setBounds((this.getWidth()/2)+5, 150, (this.getWidth()/2)-10, 25);
 		add(saveButton);
 		pngButton = new JButton("Save as PNG");
 		pngButton.setToolTipText("Save board as png file. Remember to add .png to your file name.");
+		pngButton.setBounds(30, 180, this.getWidth()-60, 25);
 		add(pngButton);
 		
 		add(Box.createVerticalStrut(50));
 		
-		sizeLabel = new JLabel("Board size: "+this.width+"x"+this.height+" ");
+		sizeLabel = new JLabel("Board size: "+this.width+"x"+this.height+" ", JLabel.CENTER);
 		sizeLabel.setFont(font);
 		sizeLabel.setForeground(Color.WHITE);
+		sizeLabel.setBounds(10, 235, this.getWidth()-20, 25);
 		add(sizeLabel);
 		
 		sizeButton = new JButton("Change Size");
 		sizeButton.setToolTipText("Change board size. Board'll be cleared.");
+		sizeButton.setBounds(40, 265, this.getWidth()-80, 30);
 		add(sizeButton);
 		
 		add(Box.createVerticalStrut(50));
 		
-		nghbLabel = new JLabel("Neighbourhood:");
+		nghbLabel = new JLabel("Neighbourhood:", JLabel.CENTER);
 		nghbLabel.setFont(font);
 		nghbLabel.setForeground(Color.WHITE);
+		nghbLabel.setBounds(10, 325, this.getWidth()-20, 25);
 		add(nghbLabel);
 		
 		nghbCombo = new JComboBox<String>();
 		nghbCombo.addItem("Moore");
 		nghbCombo.addItem("von Neumann");
+		nghbCombo.setBounds(30, 355, this.getWidth()-60, 25);
 		add(nghbCombo);
 		
 		add(Box.createVerticalStrut(50));
 		
-		boundLabel = new JLabel("Boundary:");
+		boundLabel = new JLabel("Boundary:", JLabel.RIGHT);
 		boundLabel.setFont(font);
 		boundLabel.setForeground(Color.WHITE);
+		boundLabel.setBounds(10, 410, (this.getWidth()/2)-10, 25);
 		add(boundLabel);
 		
 		boundCombo = new JComboBox<String>();
-		boundCombo.setMinimumSize(new Dimension(100, 20));
+		boundCombo.setBounds((this.getWidth()/2)+10, 410, (this.getWidth()/2)-20, 25);
 		boundCombo.addItem("Void");
 		boundCombo.addItem("Planet");
 		add(boundCombo);
 		
 		add(Box.createVerticalStrut(50));
 		
-		rulesLabel = new JLabel("Rules: ");
+		rulesLabel = new JLabel("Rules: ", JLabel.RIGHT);
 		rulesLabel.setFont(font);
 		rulesLabel.setForeground(Color.WHITE);
+		rulesLabel.setBounds(10, 465, (this.getWidth()/2)-30, 25);
 		add(rulesLabel);
 		
 		rulesCombo = new JComboBox<String>();
 		rulesCombo.addItem("Wireworld");
 		rulesCombo.addItem("Game Of Life");
 		rulesCombo.addItem("Own rules");
+		rulesCombo.setBounds((this.getWidth()/2)-20, 465, (this.getWidth()/2), 25);
 		add(rulesCombo);
 		
 		ownRulesButton = new JButton("New rules");
 		ownRulesButton.setEnabled(false);
 		ownRulesButton.setToolTipText("Set your own rules in Rules Editor.");
+		ownRulesButton.setBounds(40, 500, this.getWidth()-80, 30);
 		add(ownRulesButton);
 		
 		repaint();

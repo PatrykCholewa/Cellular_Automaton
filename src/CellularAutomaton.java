@@ -7,7 +7,10 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.JOptionPane;
@@ -30,6 +33,16 @@ public class CellularAutomaton extends JFrame {
 		setTitle("CellularAutomaton");
 		setSize(810, 630);
 		setBackground(Color.DARK_GRAY);
+		
+		try {
+			
+			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+			SwingUtilities.updateComponentTreeUI(this);
+			
+		} catch (ClassNotFoundException | InstantiationException
+				| IllegalAccessException | UnsupportedLookAndFeelException e1) {
+			;
+		}
 
 		settingsPanel = new SettingsPanel();
 		setPlayButton();
@@ -70,7 +83,7 @@ public class CellularAutomaton extends JFrame {
 					tablePanel.nextGeneration();
 				} catch (Exception exc) {
 					JOptionPane.showMessageDialog(null,
-							"Wielkie nieba! Nie działa...");
+							"Congratulations!\nYou've crushed our automaton...");
 				}
 			}
 		});
@@ -337,7 +350,7 @@ public class CellularAutomaton extends JFrame {
 					try {
 						tablePanel.setRules(rulesDialog.getRules(), rulesDialog.getNumberOfStates());
 					} catch (Exception exc) {
-						JOptionPane.showMessageDialog(null, "Your rules cannot be runned :(\nPlease refer to the specification");
+						JOptionPane.showMessageDialog(null, "Your rules cannot be runned :(\nPlease refer to the specification.");
 						settingsPanel.rulesCombo.setSelectedIndex(0);
 					}
 				}
