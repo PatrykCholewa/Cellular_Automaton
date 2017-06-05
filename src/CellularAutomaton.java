@@ -31,7 +31,7 @@ public class CellularAutomaton extends JFrame {
 
 	public CellularAutomaton() {
 		setTitle("CellularAutomaton");
-		setSize(810, 630);
+		setSize(810, 640);
 		setBackground(Color.DARK_GRAY);
 		
 		try {
