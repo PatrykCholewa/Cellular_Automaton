@@ -18,7 +18,7 @@ public class SkipDialog extends JDialog implements ActionListener {
 	private boolean dataOk = false;
 	
 	public SkipDialog(JFrame owner) {
-		super(owner, "Change size", true);
+		super(owner, "Skip generations", true);
 		setSize(300, 210);
 		setResizable(false);
 		setLayout(null);
