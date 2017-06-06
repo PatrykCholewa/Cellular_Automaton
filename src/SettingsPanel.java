@@ -18,6 +18,7 @@ public class SettingsPanel extends JPanel {
 	private int height = 30;
 	public JButton playButton;
 	public JButton clearButton;
+	public JButton skipButton;
 	public JLabel speedLabel;
 	public JSlider speedSlider;
 	public JButton openButton;
@@ -51,32 +52,37 @@ public class SettingsPanel extends JPanel {
 		clearButton.setBounds((this.getWidth()/2)+5, 15, (this.getWidth()/2)-10, 35);
 		add(clearButton);
 		
+		skipButton = new JButton("Skip generations");
+		skipButton.setToolTipText("Enter number of generations to skip.");
+		skipButton.setBounds(30, 60, this.getWidth()-60, 25);
+		add(skipButton);
+		
 		add(Box.createVerticalStrut(50));
 		
 		speedLabel = new JLabel("Delay: 500ms", JLabel.CENTER);
 		speedLabel.setFont(font);
 		speedLabel.setForeground(Color.WHITE);
-		speedLabel.setBounds(10, 70, this.getWidth()-20, 25);
+		speedLabel.setBounds(10, 110, this.getWidth()-20, 25);
 		add(speedLabel);
 		
 		speedSlider = new JSlider(JSlider.HORIZONTAL,5, 800, 500);
 		speedSlider.setBackground(Color.DARK_GRAY);
-		speedSlider.setBounds(10, 105, this.getWidth()-20, 15);
+		speedSlider.setBounds(10, 135, this.getWidth()-20, 15);
 		add(speedSlider);
 		
 		add(Box.createVerticalStrut(50));
 		
 		openButton = new JButton("Open");
 		openButton.setToolTipText("Open board from file.");
-		openButton.setBounds(10, 150, (this.getWidth()/2)-5, 25);
+		openButton.setBounds(10, 180, (this.getWidth()/2)-5, 25);
 		add(openButton);
 		saveButton = new JButton("Save");
 		saveButton.setToolTipText("Save board to file.");
-		saveButton.setBounds((this.getWidth()/2)+5, 150, (this.getWidth()/2)-10, 25);
+		saveButton.setBounds((this.getWidth()/2)+5, 180, (this.getWidth()/2)-10, 25);
 		add(saveButton);
 		pngButton = new JButton("Save as PNG");
 		pngButton.setToolTipText("Save board as png file. Remember to add .png to your file name.");
-		pngButton.setBounds(30, 180, this.getWidth()-60, 25);
+		pngButton.setBounds(30, 210, this.getWidth()-60, 25);
 		add(pngButton);
 		
 		add(Box.createVerticalStrut(50));
@@ -84,12 +90,12 @@ public class SettingsPanel extends JPanel {
 		sizeLabel = new JLabel("Board size: "+this.width+"x"+this.height+" ", JLabel.CENTER);
 		sizeLabel.setFont(font);
 		sizeLabel.setForeground(Color.WHITE);
-		sizeLabel.setBounds(10, 235, this.getWidth()-20, 25);
+		sizeLabel.setBounds(10, 265, this.getWidth()-20, 25);
 		add(sizeLabel);
 		
 		sizeButton = new JButton("Change Size");
 		sizeButton.setToolTipText("Change board size. Board'll be cleared.");
-		sizeButton.setBounds(40, 265, this.getWidth()-80, 30);
+		sizeButton.setBounds(40, 295, this.getWidth()-80, 30);
 		add(sizeButton);
 		
 		add(Box.createVerticalStrut(50));
@@ -97,13 +103,13 @@ public class SettingsPanel extends JPanel {
 		nghbLabel = new JLabel("Neighbourhood:", JLabel.CENTER);
 		nghbLabel.setFont(font);
 		nghbLabel.setForeground(Color.WHITE);
-		nghbLabel.setBounds(10, 325, this.getWidth()-20, 25);
+		nghbLabel.setBounds(10, 355, this.getWidth()-20, 25);
 		add(nghbLabel);
 		
 		nghbCombo = new JComboBox<String>();
 		nghbCombo.addItem("Moore");
 		nghbCombo.addItem("von Neumann");
-		nghbCombo.setBounds(30, 355, this.getWidth()-60, 25);
+		nghbCombo.setBounds(30, 385, this.getWidth()-60, 25);
 		add(nghbCombo);
 		
 		add(Box.createVerticalStrut(50));
@@ -111,11 +117,11 @@ public class SettingsPanel extends JPanel {
 		boundLabel = new JLabel("Boundary:", JLabel.RIGHT);
 		boundLabel.setFont(font);
 		boundLabel.setForeground(Color.WHITE);
-		boundLabel.setBounds(10, 410, (this.getWidth()/2)-10, 25);
+		boundLabel.setBounds(10, 440, (this.getWidth()/2)-10, 25);
 		add(boundLabel);
 		
 		boundCombo = new JComboBox<String>();
-		boundCombo.setBounds((this.getWidth()/2)+10, 410, (this.getWidth()/2)-20, 25);
+		boundCombo.setBounds((this.getWidth()/2)+10, 440, (this.getWidth()/2)-20, 25);
 		boundCombo.addItem("Void");
 		boundCombo.addItem("Planet");
 		add(boundCombo);
@@ -125,20 +131,20 @@ public class SettingsPanel extends JPanel {
 		rulesLabel = new JLabel("Rules: ", JLabel.RIGHT);
 		rulesLabel.setFont(font);
 		rulesLabel.setForeground(Color.WHITE);
-		rulesLabel.setBounds(10, 465, (this.getWidth()/2)-30, 25);
+		rulesLabel.setBounds(10, 495, (this.getWidth()/2)-30, 25);
 		add(rulesLabel);
 		
 		rulesCombo = new JComboBox<String>();
 		rulesCombo.addItem("Wireworld");
 		rulesCombo.addItem("Game Of Life");
 		rulesCombo.addItem("Own rules");
-		rulesCombo.setBounds((this.getWidth()/2)-20, 465, (this.getWidth()/2), 25);
+		rulesCombo.setBounds((this.getWidth()/2)-20, 495, (this.getWidth()/2), 25);
 		add(rulesCombo);
 		
 		ownRulesButton = new JButton("New rules");
 		ownRulesButton.setEnabled(false);
 		ownRulesButton.setToolTipText("Set your own rules in Rules Editor.");
-		ownRulesButton.setBounds(40, 500, this.getWidth()-80, 30);
+		ownRulesButton.setBounds(40, 530, this.getWidth()-80, 30);
 		add(ownRulesButton);
 		
 		repaint();

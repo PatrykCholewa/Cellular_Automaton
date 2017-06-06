@@ -23,6 +23,7 @@ public class CellularAutomaton extends JFrame {
 	private TablePanel tablePanel;
 	private SettingsPanel settingsPanel;
 	private JFileChooser fc = new JFileChooser();
+	private SkipDialog skipDialog = new SkipDialog(this);
 	private SizeDialog sizeDialog = new SizeDialog(this);
 	private RulesDialog rulesDialog = new RulesDialog(this);
 
@@ -47,6 +48,7 @@ public class CellularAutomaton extends JFrame {
 		settingsPanel = new SettingsPanel();
 		setPlayButton();
 		setClearButton();
+		setSkipButton();
 		setSpeedSlider();
 		setOpenButton();
 		setSaveButton();
@@ -83,7 +85,7 @@ public class CellularAutomaton extends JFrame {
 					tablePanel.nextGeneration();
 				} catch (Exception exc) {
 					JOptionPane.showMessageDialog(null,
-							"Congratulations!\nYou've crushed our automaton...");
+							"Oh no!\nThe automaton has crushed :(...");
 				}
 			}
 		});
@@ -123,6 +125,30 @@ public class CellularAutomaton extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				pause();
 				tablePanel.clearBoard();
+			}
+
+		});
+	}
+	
+	private void setSkipButton() {
+		settingsPanel.skipButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pause();
+				paintTimer.stop();
+				skipDialog.setVisible(true);
+				if (skipDialog.isOK()) {
+					try {
+						for(int i=0; i<skipDialog.numOfGenToSkip(); i++) {
+							tablePanel.nextGeneration();
+						}
+					} catch (Exception exc) {
+						JOptionPane.showMessageDialog(null,
+								"Oh no!\nThe automaton has crushed :(...");
+					}
+				}
+				skipDialog.setOk(false);
+				paintTimer.start();
 			}
 
 		});
