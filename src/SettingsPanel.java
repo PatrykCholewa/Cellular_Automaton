@@ -33,6 +33,7 @@ public class SettingsPanel extends JPanel {
 	public JLabel rulesLabel;
 	public JComboBox<String> rulesCombo;
 	public JButton ownRulesButton;
+	private JLabel authorsLabel;
 
 	
 	public SettingsPanel() {
@@ -146,6 +147,12 @@ public class SettingsPanel extends JPanel {
 		ownRulesButton.setToolTipText("Set your own rules in Rules Editor.");
 		ownRulesButton.setBounds(40, 530, this.getWidth()-80, 30);
 		add(ownRulesButton);
+		
+		authorsLabel = new JLabel("By: Patryk Cholewa, Michal Mitros.");
+		authorsLabel.setFont(new Font("Courier New", Font.PLAIN, 10));
+		authorsLabel.setBounds(5, 585, this.getWidth()-4, 10);
+		authorsLabel.setForeground(Color.WHITE);
+		add(authorsLabel);
 		
 		repaint();
 	}
