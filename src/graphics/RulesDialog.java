@@ -34,7 +34,7 @@ public class RulesDialog extends JDialog implements ActionListener {
 	private boolean ok = false;
 	
 	public RulesDialog(JFrame owner) {
-		super(owner, "engine.Rules Editor", true);
+		super(owner, "Rules Editor", true);
 		setSize(400, 375);
 		setResizable(false);
 		setLayout(null);
@@ -100,7 +100,7 @@ public class RulesDialog extends JDialog implements ActionListener {
 		okButton.setEnabled(false);
 		add(okButton);
 		
-		previewArea.append("engine.Rules:\n");
+		previewArea.append("Rules:\n");
 	}
 	
 	@Override
@@ -153,7 +153,7 @@ public class RulesDialog extends JDialog implements ActionListener {
 		}
 		
 		if(o == clearButton) {
-			previewArea.setText("engine.Rules:\n");
+			previewArea.setText("Rules:\n");
 			rulesList.clear();
 			numOfStates = 0;
 			AField.setText("");

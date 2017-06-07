@@ -105,7 +105,7 @@ public class SettingsPanel extends JPanel {
 		
 		
 		
-		nghbLabel = new JLabel("engine.Neighbourhood:", JLabel.CENTER);
+		nghbLabel = new JLabel("Neighbourhood:", JLabel.CENTER);
 		nghbLabel.setFont(font);
 		nghbLabel.setForeground(Color.WHITE);
 		nghbLabel.setBounds(10, 305, this.getWidth()-20, 25);
@@ -119,7 +119,7 @@ public class SettingsPanel extends JPanel {
 		
 		
 		
-		boundLabel = new JLabel("engine.Boundary:", JLabel.RIGHT);
+		boundLabel = new JLabel("Boundary:", JLabel.RIGHT);
 		boundLabel.setFont(font);
 		boundLabel.setForeground(Color.WHITE);
 		boundLabel.setBounds(10, 380, (this.getWidth()/2)-10, 25);
@@ -133,7 +133,7 @@ public class SettingsPanel extends JPanel {
 		
 		
 		
-		rulesLabel = new JLabel("engine.Rules: ", JLabel.RIGHT);
+		rulesLabel = new JLabel("Rules: ", JLabel.RIGHT);
 		rulesLabel.setFont(font);
 		rulesLabel.setForeground(Color.WHITE);
 		rulesLabel.setBounds(10, 425, (this.getWidth()/2)-30, 25);
@@ -148,7 +148,7 @@ public class SettingsPanel extends JPanel {
 		
 		ownRulesButton = new JButton("New rules");
 		ownRulesButton.setEnabled(false);
-		ownRulesButton.setToolTipText("Set your own rules in engine.Rules Editor.");
+		ownRulesButton.setToolTipText("Set your own rules in Rules Editor.");
 		ownRulesButton.setBounds(40, 455, this.getWidth()-80, 30);
 		add(ownRulesButton);
 		
