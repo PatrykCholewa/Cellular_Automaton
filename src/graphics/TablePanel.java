@@ -2,17 +2,11 @@ package graphics;
 
 import engine.Table;
 import gate.GateAdder;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.Random;
-import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -26,7 +20,6 @@ public class TablePanel extends JPanel implements MouseListener {
 	private Table tab;
 	private int cellSize;
 	private int numOfStates;
-	private BufferedImage paintImage;
 	private boolean addGateMode = false;
 	private String gateName = "AND";
 	
@@ -61,8 +54,6 @@ public class TablePanel extends JPanel implements MouseListener {
 		rules[3] = "1/12/1/3";
 		numOfStates = 4;
 		this.tab.setRules(rules);
-		
-		paintImage = new BufferedImage(cellSize*numberOfRows, cellSize*numberOfCols, BufferedImage.TYPE_INT_RGB);
 		
 		this.addMouseListener(this);
 		repaint();
@@ -163,17 +154,6 @@ public class TablePanel extends JPanel implements MouseListener {
 		
 	}
 	
-	public void setRandomBoard() {
-		Random r = new Random();
-		int newBoard[][] = new int[tab.getNumberOfRows()][tab.getNumberOfColumns()];
-		for(int x=0; x<newBoard.length; x++) {
-			for(int y=0; y<newBoard[x].length; y++) {
-				newBoard[x][y] = r.nextInt(numOfStates);
-			}
-		}
-		this.tab.setBoard(newBoard);
-	}
-	
 	public void nextGeneration() {
 		this.tab.makeNextGeneration();
 	}
@@ -186,20 +166,6 @@ public class TablePanel extends JPanel implements MouseListener {
 			}
 		}
 		this.tab.setBoard(newBoard);
-	}
-	
-	public void setNewTable(Table tab) {
-		this.tab = tab;
-	}
-	
-	public void updatePaint() {
-		Graphics g = paintImage.createGraphics();
-		g.dispose();
-		repaint();
-	}
-	
-	public void savePNG(File f) throws IOException {
-		ImageIO.write(paintImage, "png", f);
 	}
 	
 	private Color getColorFromState(int state) {
