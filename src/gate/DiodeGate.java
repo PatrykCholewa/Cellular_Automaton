@@ -1,3 +1,7 @@
+package gate;
+
+import engine.Table;
+import gate.LogicGate;
 
 public class DiodeGate implements LogicGate {
 

@@ -1,3 +1,9 @@
+package gate;
+
+import engine.Table;
+import gate.AndGate;
+import gate.DiodeGate;
+import gate.LogicGate;
 
 public class GateAdder {
 	

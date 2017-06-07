@@ -1,3 +1,7 @@
+package gate;
+
+import engine.Table;
+import gate.LogicGate;
 
 public class AndGate implements LogicGate {
 

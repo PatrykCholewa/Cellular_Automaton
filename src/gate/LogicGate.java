@@ -1,3 +1,7 @@
+package gate;
+
+
+import engine.Table;
 
 public interface LogicGate {
 	String getName();
