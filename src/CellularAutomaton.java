@@ -408,7 +408,7 @@ public class CellularAutomaton extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pause();
-				if(tablePanel.getNumOfCols() > 50 || tablePanel.getNumOfRows() > 50 || tablePanel.getNumOfCols() < 10 || tablePanel.getNumOfRows() < 10) {
+				/*if(tablePanel.getNumOfCols() > 50 || tablePanel.getNumOfRows() > 50 || tablePanel.getNumOfCols() < 10 || tablePanel.getNumOfRows() < 10) {
 					JOptionPane.showMessageDialog(null, "The board is too big or too small :(\nBoard's dimensions must be between 10 and 50.");
 				} else {
 					
@@ -429,7 +429,9 @@ public class CellularAutomaton extends JFrame {
 					} else {
 						JOptionPane.showMessageDialog(null, "Unknown logic gate.");
 					}
-				}
+				}*/
+				
+				tablePanel.setAddGateMode(true);
 			}
 		});
 	}

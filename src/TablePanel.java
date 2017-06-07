@@ -21,6 +21,7 @@ public class TablePanel extends JPanel implements MouseListener {
 	private int cellSize;
 	private int numOfStates;
 	private BufferedImage paintImage;
+	private boolean addGateMode = false;
 	
 	public TablePanel(int numberOfRows, int numberOfCols, int numOfStates) {
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -249,18 +250,31 @@ public class TablePanel extends JPanel implements MouseListener {
 	public int getNumOfCols() {
 		return tab.getNumberOfColumns();
 	}
-
+	
+	public void setAddGateMode(boolean k) {
+		addGateMode = k;
+	}
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(e.getY() <= cellSize*tab.getNumberOfColumns() && e.getX() <= cellSize*tab.getNumberOfRows() && e.getButton() == MouseEvent.BUTTON1) {
-			int x = (int)Math.floor(e.getX()/this.cellSize);
-			int y = (int)Math.floor(e.getY()/this.cellSize);
-			increaseCellState(x, y);
-		}
-		if(e.getY() <= cellSize*tab.getNumberOfColumns() && e.getX() <= cellSize*tab.getNumberOfRows() && e.getButton() == MouseEvent.BUTTON3) {
-			int x = (int)Math.floor(e.getX()/this.cellSize);
-			int y = (int)Math.floor(e.getY()/this.cellSize);
-			decreaseCellState(x, y);
+		
+		if(!addGateMode) {
+			if(e.getY() <= cellSize*tab.getNumberOfColumns() && e.getX() <= cellSize*tab.getNumberOfRows() && e.getButton() == MouseEvent.BUTTON1) {
+				int x = (int)Math.floor(e.getX()/this.cellSize);
+				int y = (int)Math.floor(e.getY()/this.cellSize);
+				increaseCellState(x, y);
+			}
+			if(e.getY() <= cellSize*tab.getNumberOfColumns() && e.getX() <= cellSize*tab.getNumberOfRows() && e.getButton() == MouseEvent.BUTTON3) {
+				int x = (int)Math.floor(e.getX()/this.cellSize);
+				int y = (int)Math.floor(e.getY()/this.cellSize);
+				decreaseCellState(x, y);
+			}
+		} else {
+			if(e.getY() <= cellSize*tab.getNumberOfColumns() && e.getX() <= cellSize*tab.getNumberOfRows()) {
+				int x = (int)Math.floor(e.getX()/this.cellSize);
+				int y = (int)Math.floor(e.getY()/this.cellSize);
+				
+			}
 		}
 	}
 
