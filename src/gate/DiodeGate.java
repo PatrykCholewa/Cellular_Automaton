@@ -1,6 +1,5 @@
 package gate;
 
-import engine.Table;
 import gate.LogicGate;
 
 public class DiodeGate implements LogicGate {
@@ -14,16 +13,16 @@ public class DiodeGate implements LogicGate {
 	}
 
 	@Override
-	public Table addToTable(Table t, int x, int y) {
+	public int[][] addToTable(int [][]t, int x, int y) {
 		
-		if(y < t.getNumberOfColumns() - 2 && x < t.getNumberOfRows() - 3) {
-			t.setCellValue(x+1, y, 3);
-			t.setCellValue(x+2, y, 3);
-			t.setCellValue(x, y+1, 3);
-			t.setCellValue(x+1, y+1, 3);
-			t.setCellValue(x+3, y+1, 3);
-			t.setCellValue(x+1, y+2, 3);
-			t.setCellValue(x+2, y+2, 3);
+		if(y < t[0].length - 2 && x < t.length - 3) {
+			t[x+1][y] = 3;
+			t[x+2][y] = 3;
+			t[x][y+1] = 3;
+			t[x+1][y+1] = 3;
+			t[x+3][y+1] = 3;
+			t[x+1][y+2] = 3;
+			t[x+2][y+2] = 3;
 			
 		} else {
 			gatePlaced = false;

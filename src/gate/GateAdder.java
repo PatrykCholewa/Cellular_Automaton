@@ -37,7 +37,7 @@ public class GateAdder {
 	
 	public void addGateToTable(int x, int y) {
 		
-		tab = logicGate.addToTable(tab, x, y);
+		tab.setBoard(logicGate.addToTable(tab.getBoard(), x, y));
 		gatePlaced = logicGate.canInsertGate();
 	}
 	
