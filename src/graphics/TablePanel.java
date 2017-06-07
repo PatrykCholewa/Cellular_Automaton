@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -302,6 +303,10 @@ public class TablePanel extends JPanel implements MouseListener {
 				GateAdder gateAdder = new GateAdder(tab, gateName);
 				gateAdder.addGateToTable(x, y);
 				tab = gateAdder.getTable();
+				
+				if(!gateAdder.isGatePlaced()) {
+					JOptionPane.showMessageDialog(null, "Gate can not be so close to the bottom or the right edge.");
+				}
 				
 				addGateMode = false;
 			}

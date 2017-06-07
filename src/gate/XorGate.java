@@ -4,6 +4,8 @@ import engine.Table;
 import gate.LogicGate;
 
 public class XorGate implements LogicGate {
+	
+	private boolean gatePlaced = true;
 
 	@Override
 	public String getName() {
@@ -40,9 +42,16 @@ public class XorGate implements LogicGate {
 			t.setCellValue(x+5, y+5, 3);
 			t.setCellValue(x+3, y+6, 3);
 			t.setCellValue(x+4, y+6, 3);
+		} else {
+			gatePlaced = false;
 		}
 		
 		return t;
+	}
+
+	@Override
+	public boolean canInsertGate() {
+		return gatePlaced;
 	}
 	
 }

@@ -4,7 +4,9 @@ import engine.Table;
 import gate.LogicGate;
 
 public class OrGate implements LogicGate {
-
+	
+	private boolean gatePlaced = true;
+	
 	@Override
 	public String getName() {
 		
@@ -29,9 +31,16 @@ public class OrGate implements LogicGate {
 			t.setCellValue(x+2, y+4, 3);
 			t.setCellValue(x+3, y+4, 3);
 			
+		} else {
+			gatePlaced = false;
 		}
 		
 		return t;
+	}
+
+	@Override
+	public boolean canInsertGate() {
+		return gatePlaced;
 	}
 	
 }

@@ -9,6 +9,7 @@ public class GateAdder {
 	
 	private Table tab;
 	LogicGate logicGate;
+	private boolean gatePlaced = true;
 	
 	public GateAdder(Table tab, String gateName) {
 		this.tab = tab;
@@ -37,6 +38,11 @@ public class GateAdder {
 	public void addGateToTable(int x, int y) {
 		
 		tab = logicGate.addToTable(tab, x, y);
+		gatePlaced = logicGate.canInsertGate();
+	}
+	
+	public boolean isGatePlaced() {
+		return gatePlaced;
 	}
 	
 }

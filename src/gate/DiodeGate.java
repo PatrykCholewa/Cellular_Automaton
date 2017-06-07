@@ -4,6 +4,8 @@ import engine.Table;
 import gate.LogicGate;
 
 public class DiodeGate implements LogicGate {
+	
+	private boolean gatePlaced = true;
 
 	@Override
 	public String getName() {
@@ -23,9 +25,16 @@ public class DiodeGate implements LogicGate {
 			t.setCellValue(x+1, y+2, 3);
 			t.setCellValue(x+2, y+2, 3);
 			
+		} else {
+			gatePlaced = false;
 		}
 		
 		return t;
+	}
+
+	@Override
+	public boolean canInsertGate() {
+		return gatePlaced;
 	}
 	
 }
