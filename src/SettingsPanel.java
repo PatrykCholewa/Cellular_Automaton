@@ -2,7 +2,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -26,13 +25,16 @@ public class SettingsPanel extends JPanel {
 	public JButton pngButton;
 	public JLabel sizeLabel;
 	public JButton sizeButton;
-	public JLabel nghbLabel;
+	private JLabel nghbLabel;
 	public JComboBox<String> nghbCombo;
-	public JLabel boundLabel;
+	private JLabel boundLabel;
 	public JComboBox<String> boundCombo;
-	public JLabel rulesLabel;
+	private JLabel rulesLabel;
 	public JComboBox<String> rulesCombo;
 	public JButton ownRulesButton;
+	public JLabel addLogicGateLabel;
+	public JComboBox<String> addLogicGateCombo;
+	public JButton addLogicGateButton;
 	private JLabel authorsLabel;
 
 	
@@ -58,101 +60,125 @@ public class SettingsPanel extends JPanel {
 		skipButton.setBounds(30, 60, this.getWidth()-60, 25);
 		add(skipButton);
 		
-		add(Box.createVerticalStrut(50));
+		
 		
 		speedLabel = new JLabel("Delay: 500ms", JLabel.CENTER);
 		speedLabel.setFont(font);
 		speedLabel.setForeground(Color.WHITE);
-		speedLabel.setBounds(10, 110, this.getWidth()-20, 25);
+		speedLabel.setBounds(10, 100, this.getWidth()-20, 25);
 		add(speedLabel);
 		
 		speedSlider = new JSlider(JSlider.HORIZONTAL,5, 800, 500);
 		speedSlider.setBackground(Color.DARK_GRAY);
-		speedSlider.setBounds(10, 135, this.getWidth()-20, 15);
+		speedSlider.setBounds(10, 125, this.getWidth()-20, 15);
 		add(speedSlider);
 		
-		add(Box.createVerticalStrut(50));
+		
 		
 		openButton = new JButton("Open");
 		openButton.setToolTipText("Open board from file.");
-		openButton.setBounds(10, 180, (this.getWidth()/2)-5, 25);
+		openButton.setBounds(10, 155, (this.getWidth()/2)-5, 25);
 		add(openButton);
 		saveButton = new JButton("Save");
 		saveButton.setToolTipText("Save board to file.");
-		saveButton.setBounds((this.getWidth()/2)+5, 180, (this.getWidth()/2)-10, 25);
+		saveButton.setBounds((this.getWidth()/2)+5, 155, (this.getWidth()/2)-10, 25);
 		add(saveButton);
 		pngButton = new JButton("Save as PNG");
 		pngButton.setToolTipText("Save board as png file. Remember to add .png to your file name.");
-		pngButton.setBounds(30, 210, this.getWidth()-60, 25);
+		pngButton.setBounds(30, 185, this.getWidth()-60, 25);
 		add(pngButton);
 		
-		add(Box.createVerticalStrut(50));
+		
 		
 		sizeLabel = new JLabel("Board size: "+this.width+"x"+this.height+" ", JLabel.CENTER);
 		sizeLabel.setFont(font);
 		sizeLabel.setForeground(Color.WHITE);
-		sizeLabel.setBounds(10, 265, this.getWidth()-20, 25);
+		sizeLabel.setBounds(10, 225, this.getWidth()-20, 25);
 		add(sizeLabel);
 		
 		sizeButton = new JButton("Change Size");
 		sizeButton.setToolTipText("Change board size. Board'll be cleared.");
-		sizeButton.setBounds(40, 295, this.getWidth()-80, 30);
+		sizeButton.setBounds(40, 255, this.getWidth()-80, 30);
 		add(sizeButton);
 		
-		add(Box.createVerticalStrut(50));
+		
 		
 		nghbLabel = new JLabel("Neighbourhood:", JLabel.CENTER);
 		nghbLabel.setFont(font);
 		nghbLabel.setForeground(Color.WHITE);
-		nghbLabel.setBounds(10, 355, this.getWidth()-20, 25);
+		nghbLabel.setBounds(10, 305, this.getWidth()-20, 25);
 		add(nghbLabel);
 		
 		nghbCombo = new JComboBox<String>();
 		nghbCombo.addItem("Moore");
 		nghbCombo.addItem("von Neumann");
-		nghbCombo.setBounds(30, 385, this.getWidth()-60, 25);
+		nghbCombo.setBounds(30, 335, this.getWidth()-60, 25);
 		add(nghbCombo);
 		
-		add(Box.createVerticalStrut(50));
+		
 		
 		boundLabel = new JLabel("Boundary:", JLabel.RIGHT);
 		boundLabel.setFont(font);
 		boundLabel.setForeground(Color.WHITE);
-		boundLabel.setBounds(10, 440, (this.getWidth()/2)-10, 25);
+		boundLabel.setBounds(10, 380, (this.getWidth()/2)-10, 25);
 		add(boundLabel);
 		
 		boundCombo = new JComboBox<String>();
-		boundCombo.setBounds((this.getWidth()/2)+10, 440, (this.getWidth()/2)-20, 25);
+		boundCombo.setBounds((this.getWidth()/2)+10, 380, (this.getWidth()/2)-20, 25);
 		boundCombo.addItem("Void");
 		boundCombo.addItem("Planet");
 		add(boundCombo);
 		
-		add(Box.createVerticalStrut(50));
+		
 		
 		rulesLabel = new JLabel("Rules: ", JLabel.RIGHT);
 		rulesLabel.setFont(font);
 		rulesLabel.setForeground(Color.WHITE);
-		rulesLabel.setBounds(10, 495, (this.getWidth()/2)-30, 25);
+		rulesLabel.setBounds(10, 425, (this.getWidth()/2)-30, 25);
 		add(rulesLabel);
 		
 		rulesCombo = new JComboBox<String>();
 		rulesCombo.addItem("Wireworld");
 		rulesCombo.addItem("Game Of Life");
 		rulesCombo.addItem("Own rules");
-		rulesCombo.setBounds((this.getWidth()/2)-20, 495, (this.getWidth()/2), 25);
+		rulesCombo.setBounds((this.getWidth()/2)-20, 425, (this.getWidth()/2), 25);
 		add(rulesCombo);
 		
 		ownRulesButton = new JButton("New rules");
 		ownRulesButton.setEnabled(false);
 		ownRulesButton.setToolTipText("Set your own rules in Rules Editor.");
-		ownRulesButton.setBounds(40, 530, this.getWidth()-80, 30);
+		ownRulesButton.setBounds(40, 455, this.getWidth()-80, 30);
 		add(ownRulesButton);
+		
+		
+		
+		addLogicGateLabel = new JLabel("Insert logic gate:", JLabel.CENTER);
+		addLogicGateLabel.setFont(font);
+		addLogicGateLabel.setForeground(Color.WHITE);
+		addLogicGateLabel.setBounds(10, 500, this.getWidth()-20, 25);
+		add(addLogicGateLabel);
+		
+		addLogicGateCombo = new JComboBox<String>();
+		addLogicGateCombo.addItem("AND");
+		addLogicGateCombo.addItem("OR");
+		addLogicGateCombo.addItem("DIODE");
+		addLogicGateCombo.addItem("XOR");
+		addLogicGateCombo.setBounds(10, 530, (this.getWidth()/2), 25);
+		add(addLogicGateCombo);
+		
+		addLogicGateButton = new JButton("Add");
+		addLogicGateButton.setBounds((this.getWidth()/2)+10, 530, (this.getWidth()/2)-20, 25);
+		add(addLogicGateButton);
+		
+		
 		
 		authorsLabel = new JLabel("By: Patryk Cholewa, Michal Mitros.");
 		authorsLabel.setFont(new Font("Courier New", Font.PLAIN, 10));
 		authorsLabel.setBounds(5, 585, this.getWidth()-4, 12);
 		authorsLabel.setForeground(Color.WHITE);
 		add(authorsLabel);
+		
+		
 		
 		repaint();
 	}

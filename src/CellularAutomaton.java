@@ -26,6 +26,7 @@ public class CellularAutomaton extends JFrame {
 	private SkipDialog skipDialog = new SkipDialog(this);
 	private SizeDialog sizeDialog = new SizeDialog(this);
 	private RulesDialog rulesDialog = new RulesDialog(this);
+	private AddGateDialog addGateDialog = new AddGateDialog(this);
 
 	private int numOfStates = 4;
 	private final int DEF_SIZE = 30;
@@ -58,6 +59,7 @@ public class CellularAutomaton extends JFrame {
 		setBoundCombo();
 		setRulesCombo();
 		setRulesButton();
+		setAddLogicGateButton();
 		add(settingsPanel);
 
 		tablePanel = new TablePanel(DEF_SIZE, DEF_SIZE, numOfStates);
@@ -353,6 +355,21 @@ public class CellularAutomaton extends JFrame {
 				} else {
 					settingsPanel.ownRulesButton.setEnabled(false);
 					tablePanel.setRules(opt);
+					
+					if(opt.equals("Wireworld")) {
+						settingsPanel.addLogicGateButton.setEnabled(true);
+						settingsPanel.addLogicGateButton.setVisible(true);
+						settingsPanel.addLogicGateCombo.setEnabled(true);
+						settingsPanel.addLogicGateCombo.setVisible(true);
+						settingsPanel.addLogicGateLabel.setVisible(true);
+					} else {
+						settingsPanel.addLogicGateButton.setEnabled(false);
+						settingsPanel.addLogicGateButton.setVisible(false);
+						settingsPanel.addLogicGateCombo.setEnabled(false);
+						settingsPanel.addLogicGateCombo.setVisible(false);
+						settingsPanel.addLogicGateLabel.setVisible(false);
+					}
+					
 					switch (opt) {
 					case "Game Of Life":
 						numOfStates = 2;
@@ -383,6 +400,37 @@ public class CellularAutomaton extends JFrame {
 				rulesDialog.setOK(false);
 			}
 
+		});
+	}
+	
+	private void setAddLogicGateButton() {
+		settingsPanel.addLogicGateButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pause();
+				if(tablePanel.getNumOfCols() > 50 || tablePanel.getNumOfRows() > 50 || tablePanel.getNumOfCols() < 10 || tablePanel.getNumOfRows() < 10) {
+					JOptionPane.showMessageDialog(null, "The board is too big or too small :(\nBoard's dimensions must be between 10 and 50.");
+				} else {
+					
+					if(addGateDialog.canBeAdded(settingsPanel.addLogicGateCombo.getSelectedItem().toString())) {
+						
+						addGateDialog.setOption(settingsPanel.addLogicGateCombo.getSelectedItem().toString());
+						addGateDialog.setBoard(tablePanel.getBoard());
+						addGateDialog.setVisible(true);
+						
+						if (addGateDialog.isOK()) {
+							
+							
+							
+						}
+						
+						addGateDialog.setOk(false);
+						
+					} else {
+						JOptionPane.showMessageDialog(null, "Unknown logic gate.");
+					}
+				}
+			}
 		});
 	}
 
