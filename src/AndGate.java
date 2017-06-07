@@ -47,8 +47,8 @@ public class AndGate implements LogicGate {
 			t.setCellValue(x+4, y+6, 3);
 			t.setCellValue(x+10, y+6, 3);
 			t.setCellValue(x+3, y+7, 3);
-			t.setCellValue(x+11, y+7, 3);
-			t.setCellValue(x+12, y+7, 3);
+			t.setCellValue(x+13, y+6, 3);
+			t.setCellValue(x+12, y+6, 3);
 		}
 		
 		return t;
