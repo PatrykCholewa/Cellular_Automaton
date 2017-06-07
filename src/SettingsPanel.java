@@ -168,6 +168,7 @@ public class SettingsPanel extends JPanel {
 		
 		addLogicGateButton = new JButton("Add");
 		addLogicGateButton.setBounds((this.getWidth()/2)+10, 530, (this.getWidth()/2)-20, 25);
+		addLogicGateButton.setToolTipText("Click here and choose the cell to add logic gate.");
 		add(addLogicGateButton);
 		
 		

@@ -26,7 +26,6 @@ public class CellularAutomaton extends JFrame {
 	private SkipDialog skipDialog = new SkipDialog(this);
 	private SizeDialog sizeDialog = new SizeDialog(this);
 	private RulesDialog rulesDialog = new RulesDialog(this);
-	private AddGateDialog addGateDialog = new AddGateDialog(this);
 
 	private int numOfStates = 4;
 	private final int DEF_SIZE = 30;
@@ -59,6 +58,7 @@ public class CellularAutomaton extends JFrame {
 		setBoundCombo();
 		setRulesCombo();
 		setRulesButton();
+		setAddLogicGateCombo();
 		setAddLogicGateButton();
 		add(settingsPanel);
 
@@ -403,34 +403,23 @@ public class CellularAutomaton extends JFrame {
 		});
 	}
 	
+	private void setAddLogicGateCombo() {
+		settingsPanel.addLogicGateCombo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pause();
+				String opt = settingsPanel.addLogicGateCombo.getSelectedItem()
+						.toString();
+				tablePanel.setGateName(opt);
+			}
+		});
+	}
+	
 	private void setAddLogicGateButton() {
 		settingsPanel.addLogicGateButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				pause();
-				/*if(tablePanel.getNumOfCols() > 50 || tablePanel.getNumOfRows() > 50 || tablePanel.getNumOfCols() < 10 || tablePanel.getNumOfRows() < 10) {
-					JOptionPane.showMessageDialog(null, "The board is too big or too small :(\nBoard's dimensions must be between 10 and 50.");
-				} else {
-					
-					if(addGateDialog.canBeAdded(settingsPanel.addLogicGateCombo.getSelectedItem().toString())) {
-						
-						addGateDialog.setOption(settingsPanel.addLogicGateCombo.getSelectedItem().toString());
-						addGateDialog.setBoard(tablePanel.getBoard());
-						addGateDialog.setVisible(true);
-						
-						if (addGateDialog.isOK()) {
-							
-							
-							
-						}
-						
-						addGateDialog.setOk(false);
-						
-					} else {
-						JOptionPane.showMessageDialog(null, "Unknown logic gate.");
-					}
-				}*/
-				
 				tablePanel.setAddGateMode(true);
 			}
 		});

@@ -22,6 +22,7 @@ public class TablePanel extends JPanel implements MouseListener {
 	private int numOfStates;
 	private BufferedImage paintImage;
 	private boolean addGateMode = false;
+	private String gateName = "AND";
 	
 	public TablePanel(int numberOfRows, int numberOfCols, int numOfStates) {
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -102,6 +103,25 @@ public class TablePanel extends JPanel implements MouseListener {
 	public void setRules(String rules[], int numOfStates) {
 		this.tab.setRules(rules);
 		this.numOfStates = numOfStates;
+	}
+	
+	public void setGateName(String opt) {
+		switch(opt) {
+		case "AND":
+			gateName = opt;
+			break;
+		case "OR":
+			gateName = opt;
+			break;
+		case "DIODE":
+			gateName = opt;
+			break;
+		case "XOR":
+			gateName = opt;
+			break;
+		default:
+			gateName = "AND";
+		}
 	}
 	
 	public void setRules(String opt) {
@@ -274,6 +294,11 @@ public class TablePanel extends JPanel implements MouseListener {
 				int x = (int)Math.floor(e.getX()/this.cellSize);
 				int y = (int)Math.floor(e.getY()/this.cellSize);
 				
+				GateAdder gateAdder = new GateAdder(tab, gateName);
+				gateAdder.addGateToTable(x, y);
+				tab = gateAdder.getTable();
+				
+				addGateMode = false;
 			}
 		}
 	}
