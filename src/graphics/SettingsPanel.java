@@ -176,7 +176,7 @@ public class SettingsPanel extends JPanel {
 		
 		
 		authorsLabel = new JLabel("By: Patryk Cholewa, Michał Mitros.");
-		authorsLabel.setFont(new Font("Courier New", Font.PLAIN, 11));
+		authorsLabel.setFont(new Font("Courier New", Font.PLAIN, 10));
 		authorsLabel.setBounds(5, 585, this.getWidth()-4, 12);
 		authorsLabel.setForeground(Color.WHITE);
 		add(authorsLabel);
