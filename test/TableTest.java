@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.AfterEach;
+import engine.Table;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

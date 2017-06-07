@@ -1,4 +1,4 @@
-import java.util.IllegalFormatException;
+package engine;
 
 /**
  * Created by Patryk on 27.04.2017.
@@ -42,13 +42,13 @@ public class TableGenerationMaker {
     public int [][]makeNextGenerationBoard( int [][]oldBoard ){
 
         if( rules == null ){
-            throw new NullPointerException( "Rules not set." );
+            throw new NullPointerException( "engine.Rules not set." );
         } else
         if( neighbourhood == null ){
-            throw new NullPointerException( "Neighbourhood not set." );
+            throw new NullPointerException( "engine.Neighbourhood not set." );
         } else
         if( boundary == null ){
-            throw new NullPointerException( "Boundary not set." );
+            throw new NullPointerException( "engine.Boundary not set." );
         } else {
 
             int [][]newBoard = new int[oldBoard.length][ oldBoard[0].length ];

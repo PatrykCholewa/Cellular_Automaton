@@ -1,3 +1,5 @@
+package graphics;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class RulesDialog extends JDialog implements ActionListener {
 	private boolean ok = false;
 	
 	public RulesDialog(JFrame owner) {
-		super(owner, "Rules Editor", true);
+		super(owner, "engine.Rules Editor", true);
 		setSize(400, 375);
 		setResizable(false);
 		setLayout(null);
@@ -98,7 +100,7 @@ public class RulesDialog extends JDialog implements ActionListener {
 		okButton.setEnabled(false);
 		add(okButton);
 		
-		previewArea.append("Rules:\n");
+		previewArea.append("engine.Rules:\n");
 	}
 	
 	@Override
@@ -151,7 +153,7 @@ public class RulesDialog extends JDialog implements ActionListener {
 		}
 		
 		if(o == clearButton) {
-			previewArea.setText("Rules:\n");
+			previewArea.setText("engine.Rules:\n");
 			rulesList.clear();
 			numOfStates = 0;
 			AField.setText("");
