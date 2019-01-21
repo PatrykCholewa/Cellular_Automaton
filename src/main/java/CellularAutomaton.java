@@ -43,7 +43,7 @@ public class CellularAutomaton extends JFrame {
 			SwingUtilities.updateComponentTreeUI(this);
 			
 		} catch (ClassNotFoundException | InstantiationException
-				| IllegalAccessException | UnsupportedLookAndFeelException e1) {
+				| IllegalAccessException | UnsupportedLookAndFeelException ignored) {
 			;
 		}
 
