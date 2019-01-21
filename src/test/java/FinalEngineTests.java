@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class FinalEngineTests {
 
-    Table table;
+    private Table table;
 
     @Test
     void starGOLTest(){

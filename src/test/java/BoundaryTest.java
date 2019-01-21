@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class BoundaryTest {
 
-    Boundary boundary;
+    private Boundary boundary;
 
     @BeforeEach
     void setUp() {

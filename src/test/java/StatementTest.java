@@ -2,16 +2,14 @@ import engine.Statement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Created by Patryk on 30.04.2017.
  */
 class StatementTest {
 
-    Statement statement;
+    private Statement statement;
 
     @BeforeEach
     void setUp() {

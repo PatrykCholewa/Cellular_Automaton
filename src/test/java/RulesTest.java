@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class RulesTest {
 
-    Rules rules;
+    private Rules rules;
 
     @BeforeEach
     void setUp() {

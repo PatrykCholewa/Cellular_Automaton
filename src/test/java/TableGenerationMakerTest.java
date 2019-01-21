@@ -4,14 +4,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Created by Patryk on 30.04.2017.
  */
 class TableGenerationMakerTest {
 
-    TableGenerationMaker tgm;
+    private TableGenerationMaker tgm;
 
     @BeforeEach
     void setUp() {

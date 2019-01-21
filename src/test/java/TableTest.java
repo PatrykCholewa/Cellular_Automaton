@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  */
 class TableTest{
 
-    Table table;
+    private Table table;
 
     @BeforeEach
     void setUp() {
