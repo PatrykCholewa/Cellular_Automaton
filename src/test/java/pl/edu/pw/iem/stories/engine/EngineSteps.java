@@ -1,4 +1,4 @@
-package pl.edu.pw.iem.stories.star_appears;
+package pl.edu.pw.iem.stories.engine;
 
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -9,7 +9,7 @@ import pl.edu.pw.iem.engine.Table;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class StarAppearsSteps {
+public class EngineSteps {
 
     private Table table;
 
@@ -44,6 +44,13 @@ public class StarAppearsSteps {
     @When("a next generation is simulated")
     public void step1(){
         table.makeNextGeneration();
+    }
+
+    @When("a next 19 generations are simulated")
+    public void step19(){
+        for( int i = 0 ; i < 19 ; i++ ){
+            table.makeNextGeneration();
+        }
     }
 
     @Then("a board should be: $board")

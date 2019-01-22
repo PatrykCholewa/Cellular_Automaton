@@ -1,8 +1,7 @@
-package pl.edu.pw.iem.stories.star_appears;
+package pl.edu.pw.iem.stories.engine;
 
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
-import org.jbehave.core.failures.PendingStepStrategy;
 import org.jbehave.core.io.LoadFromClasspath;
 import org.jbehave.core.junit.JUnitStory;
 import org.jbehave.core.reporters.Format;
@@ -10,7 +9,7 @@ import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 
-public class StarAppears extends JUnitStory {
+public class Engine extends JUnitStory {
 
     @Override
     public Configuration configuration() {
@@ -25,7 +24,7 @@ public class StarAppears extends JUnitStory {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
-        return new InstanceStepsFactory(configuration(), new StarAppearsSteps());
+        return new InstanceStepsFactory(configuration(), new EngineSteps());
     }
 
 }
