@@ -55,8 +55,14 @@
         </dependency>
         <dependency>
             <groupId>org.jbehave</groupId>
-            <artifactId>jbehave-maven-plugin</artifactId>
-            <version>4.3.5</version>
+            <artifactId>jbehave-core</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>1.2.1</version>
         </dependency>
 
     </dependencies>
