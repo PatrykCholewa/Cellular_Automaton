@@ -1,6 +1,6 @@
 Narrative: A Game of Life structures appear on the board
 
-Scenario: a star structure appears a the board during Game of Life
+Scenario: a star structure appears on the board during Game of Life
 
 Given a table of Void boundary and Moore neighbourhood and a board of 5 x 5
 
@@ -35,7 +35,7 @@ Then a board should be:
 |0|0|1|0|0|
 |0|0|0|0|0|
 
-Scenario: a glider structure appears a the board during Game of Life
+Scenario: a glider structure appears on the planet board during Game of Life
 
 Given a table of Planet boundary and Moore neighbourhood and a board of 5 x 5
 
