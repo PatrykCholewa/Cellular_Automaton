@@ -1,4 +1,7 @@
-Narrative: A Game of Life structures appear on the board
+Narrative:
+As a user
+I want to simulate some structures
+in Game of Life
 
 Scenario: a star structure appears on the board during Game of Life
 
